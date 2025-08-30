@@ -181,7 +181,7 @@ function authenticateToken(req, res, next) {
 
 app.use('/', proxy('localhost:3000/'))
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 db.connect().then(() => {
     server.listen(PORT, () => {
         console.log(`server listening on port ${PORT}`)
