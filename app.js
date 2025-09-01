@@ -106,7 +106,7 @@ io.on('connection', async socket => {
         db.none('UPDATE public.users SET repertoire = $1 WHERE username = $2;', [JSON.stringify(newRepertoire), username])
         io.to(username).emit('repertoire', newRepertoire)
     })
-    
+
     socket.on('setlist', newSetlist => {
         console.log('setlist edit on', newSetlist.id)
         db.none('UPDATE public.setlists SET data = $1, concert = $2 WHERE userid = (SELECT id FROM public.users WHERE username = $3) AND id = $4', [newSetlist.data, newSetlist.data.concert, username, newSetlist.id])
@@ -117,7 +117,7 @@ io.on('connection', async socket => {
         const setlists = await db.any('SELECT id, concert FROM public.setlists WHERE userid = (SELECT id FROM public.users WHERE username = $1);', [username])
         io.to(username).emit('setlists', setlists)
     })
-    
+
     socket.on('disconnect', () => {
         console.log('user disconnected from socket')
     })
@@ -178,6 +178,8 @@ function authenticateToken(req, res, next) {
         next()
     })
 }
+
+app.use('/.well-known/acme-challenge', express.static('/acme', { dotfiles: 'allow' }))
 
 app.use('/', proxy('localhost:3000/'))
 
