@@ -179,7 +179,7 @@ function authenticateToken(req, res, next) {
     })
 }
 
-app.use('/.well-known/acme-challenge', express.static('/acme', { dotfiles: 'allow' }))
+app.use(express.static('/acme', { dotfiles: 'allow' }))
 
 app.use('/', proxy('localhost:3000/'))
 
