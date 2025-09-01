@@ -1,10 +1,8 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const http = require('http')
-const server = http.createServer(app)
+const fs = require('fs')
 const { Server } = require('socket.io')
-const io = new Server(server)
 const proxy = require('express-http-proxy')
 const jwt = require('jsonwebtoken')
 const crypt = require('crypto')
@@ -12,6 +10,28 @@ const pgp = require('pg-promise')()
 const db = pgp(process.env.DBURL)
 const bodyparser = require('body-parser')
 const uuid = require('uuid').v4
+
+const http = require('http')
+let servers;
+let ios;
+
+if (!process.env.DEV) {
+    const https = require('https')
+    
+    const privateKey = fs.readFileSync('/etc/letsencrypt/live/setlist.lschlierf.de/privkey.pem', 'utf-8')
+    const certificate = fs.readFileSync('/etc/letsencrypt/live/setlist.lschlierf.de/fullchain.pem', 'utf-8')
+    
+    const credentials = {
+        key: privateKey,
+        cert: certificate
+    }
+    servers = https.createServer(credentials, app)
+    ios = new Server(servers)
+}
+
+const server = http.createServer(app)
+
+const io = new Server(server)
 
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(bodyparser.json())
@@ -91,7 +111,12 @@ app.post('/api/repertoire', authenticateToken, async (req, res) => {
     })
 })
 
-io.on('connection', async socket => {
+io.on('connection', handleSocketConnection)
+if (!process.env.DEV) {
+    ios.on('connection', handleSocketConnection)
+}
+
+async function handleSocketConnection(socket) {
     console.log('user connected to socket')
     const token = socket.handshake.headers?.token
     if (!token) return
@@ -121,7 +146,7 @@ io.on('connection', async socket => {
     socket.on('disconnect', () => {
         console.log('user disconnected from socket')
     })
-})
+}
 
 app.get('/api/setlists', authenticateToken, async (req, res) => {
     const setlists = await db.any('SELECT id, concert FROM public.setlists WHERE userid = (SELECT id FROM public.users WHERE username = $1);', [req.user])
@@ -190,4 +215,9 @@ db.connect().then(() => {
         console.log(`http://localhost:${PORT}`)
         db.one('SELECT count(username) FROM public.users;').then((data) => { console.log(data.count, 'users loaded in db') })
     })
+    if (!process.env.DEV) {
+        servers.listen(443, () => {
+            console.log('https server listening')
+        })
+    }
 })
