@@ -111,12 +111,12 @@ app.post('/api/repertoire', authenticateToken, async (req, res) => {
     })
 })
 
-io.on('connection', handleSocketConnection)
+io.on('connection', s => handleSocketConnection(s, io))
 if (!process.env.DEV) {
-    ios.on('connection', handleSocketConnection)
+    ios.on('connection', s => handleSocketConnection(s, ios))
 }
 
-async function handleSocketConnection(socket) {
+async function handleSocketConnection(socket, sink) {
     console.log('user connected to socket')
     const token = socket.handshake.headers?.token
     if (!token) return
@@ -129,18 +129,18 @@ async function handleSocketConnection(socket) {
     socket.on('repertoire', newRepertoire => {
         console.log('repertoire edit')
         db.none('UPDATE public.users SET repertoire = $1 WHERE username = $2;', [JSON.stringify(newRepertoire), username])
-        io.to(username).emit('repertoire', newRepertoire)
+        sink.to(username).emit('repertoire', newRepertoire)
     })
 
     socket.on('setlist', newSetlist => {
         console.log('setlist edit on', newSetlist.id)
         db.none('UPDATE public.setlists SET data = $1, concert = $2 WHERE userid = (SELECT id FROM public.users WHERE username = $3) AND id = $4', [newSetlist.data, newSetlist.data.concert, username, newSetlist.id])
-        io.to(username).emit('setlist', newSetlist)
+        sink.to(username).emit('setlist', newSetlist)
     })
 
     socket.on('setlists', async () => {
         const setlists = await db.any('SELECT id, concert FROM public.setlists WHERE userid = (SELECT id FROM public.users WHERE username = $1);', [username])
-        io.to(username).emit('setlists', setlists)
+        sink.to(username).emit('setlists', setlists)
     })
 
     socket.on('disconnect', () => {
