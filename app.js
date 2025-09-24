@@ -208,11 +208,10 @@ app.use(express.static('/acme', { dotfiles: 'allow' }))
 
 app.use('/', proxy('localhost:3000/'))
 
-const PORT = process.env.PORT || 8080
 db.connect().then(() => {
-    server.listen(PORT, () => {
-        console.log(`server listening on port ${PORT}`)
-        console.log(`http://localhost:${PORT}`)
+    server.listen(80, () => {
+        console.log(`server listening on port 80`)
+        console.log(`http://localhost:80`)
         db.one('SELECT count(username) FROM public.users;').then((data) => { console.log(data.count, 'users loaded in db') })
     })
     if (!process.env.DEV) {
