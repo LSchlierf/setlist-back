@@ -1,0 +1,2156 @@
+{
+  "color": {
+    "colors": {
+      "Mary": "#f347ff",
+      "Jakob": "#47eaff",
+      "Lucas": "#007bff",
+      "Julian": "#2ef57a",
+      "Duett (sonst.)": "#ffa82e",
+      "Duett (Mary/Lucas)": "#fbff24"
+    },
+    "category": "eac0201e-5770-49e7-ac99-176f8179609e"
+  },
+  "songs": [
+    {
+      "id": "e58e5b81-2700-4c05-91ab-5bf6bf5bb1ca",
+      "title": "1000 und 1 Nacht",
+      "artist": "Klaus Lage",
+      "length": 215,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "13",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Cha cha cha",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "125",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "87414e68-4ee2-445c-acea-7621c1411852",
+      "title": "500 Miles",
+      "artist": "The Proclaimers",
+      "length": 229,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Julian",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "15",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Quickstep",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "132",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "04f3ff92-2663-4738-b2a1-b77533b44193",
+      "title": "99 Luftballons",
+      "artist": "Nena",
+      "length": 234,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "17",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": false,
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "98",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "9b41189a-8fbc-48df-8224-e9269a4bc02c",
+      "title": "Aber bitte mit Sahne",
+      "artist": "Udo Jürgens",
+      "length": 210,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "125",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "c3b1fded-496a-4f64-a958-e0402b07cec1",
+      "title": "All Star",
+      "artist": "Smash Mouth",
+      "length": 202,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "104",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "581ace9f-2ece-4b09-a175-332917fd172b",
+      "notes": "Perc. Lucas/Flo",
+      "title": "Alles Neu",
+      "artist": "Peter Fox",
+      "length": 285,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "ohne",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "888",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "134",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "4c209095-81f4-418b-99f9-2c22c6c76c7d",
+      "title": "Angels",
+      "artist": "Robbie Williams",
+      "length": 279,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Julian",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "75",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "3ca3fba8-fb70-4ee8-9ba1-97dd13404b2c",
+      "title": "Bad Romance",
+      "artist": "Lady Gaga",
+      "length": 318,
+      "properties": {
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "119",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "3128a91e-de9e-464f-b478-df920496fdb3",
+      "title": "Basket Case",
+      "artist": "Green Day",
+      "length": 181,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "170",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "8c7dd526-e184-44d2-b912-4be16d6ce420",
+      "title": "Bohemian Rhapsody",
+      "artist": "Queen",
+      "length": 355,
+      "properties": {
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Julian",
+          "Jakob"
+        ],
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "45f13cd8-6525-4c3a-a27b-0e3e7c65ab51",
+      "title": "Boulevard of broken dreams",
+      "artist": "Green Day",
+      "length": 261,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "999",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "d46b6dbd-104e-4de7-994e-dac2694cd9ba",
+      "title": "Brenna tuats guad",
+      "artist": "Hubert von Goisern",
+      "length": 224,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "16",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "134",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "73c9784c-d5bb-4630-b9bb-c7c4ad6d8c45",
+      "title": "Britney Spears Medley",
+      "artist": "Britney Spears",
+      "length": 295,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "1",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Cha cha cha",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "93",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "e97eb16c-c51d-4b48-8274-e5daffa849d8",
+      "title": "Can't fight this feeling",
+      "artist": "REO Speedwagon",
+      "length": 294,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "78",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "ea67234e-5cd1-4f6a-9ac7-ce80dcca4d19",
+      "title": "Can't stop",
+      "artist": "Red Hot Chili Peppers",
+      "length": 269,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "2",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "bbf21f2c-99f3-4807-ba53-358f06618e84",
+      "title": "Creep",
+      "artist": "Radiohead",
+      "length": 238,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "4c1ed5cf-80a6-44ac-810c-c7ee42b8e9c4",
+      "title": "Dance with somebody",
+      "artist": "Mando Diao",
+      "length": 246,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "15",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "150",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "84ba10f9-fac2-4599-88b0-9961820433c7",
+      "title": "Dancing Queen",
+      "artist": "ABBA",
+      "length": 188,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "14",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Discofox",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "100",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "2802eb5b-5554-4f8b-a051-8d8b644e8c52",
+      "title": "Disney Medley",
+      "artist": "Seven Heaven",
+      "length": 487,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Julian",
+          "Jakob",
+          "Daniel"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "888",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "92d43ae7-931b-4f35-8b5b-ab9a37481bd9",
+      "title": "Don't stop believing",
+      "artist": "The Journey",
+      "length": 241,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Julian",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "20",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "118",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "6e7d73be-145f-450c-b7b9-9e59e3ae6096",
+      "title": "Don't stop me now",
+      "artist": "Queen",
+      "length": 262,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Julian",
+          "Jakob",
+          "Daniel"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "10",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "155",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "a2b76bee-1926-4dd3-ab0d-5590105b80c3",
+      "title": "Du entschuldige i kenn di",
+      "artist": "Peter Cornelius",
+      "length": 272,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "11",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "60",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "88d36235-ca2e-4a0f-bbc1-100fea4bc36e",
+      "title": "Ein Kompliment",
+      "artist": "Sportfreunde Stiller",
+      "length": 198,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "14",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "160",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "3ba5a8d9-a968-4076-8cb1-735d1ec48699",
+      "title": "Expresso & Tschianti",
+      "artist": "Josh.",
+      "length": 179,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "6",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "130",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "649a3041-7d33-4c79-9f73-1e3c44af9b2b",
+      "title": "Fireflies",
+      "artist": "Owl City",
+      "length": 226,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Julian",
+          "Jakob"
+        ],
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "90",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "61a21c2d-efa5-498d-ad0f-ada44f115aac",
+      "title": "Footloose",
+      "artist": "Kenny Loggins",
+      "length": 272,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": false,
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "174",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "272f3bf4-c6f6-4287-89dc-606bae0b0d2a",
+      "notes": "Mary Hauptstimme (Intro, Refrain)",
+      "title": "Fürstenfeld",
+      "artist": "S.T.S",
+      "length": 342,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "11",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Quickstep",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "116",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "d405ea76-35a3-4ede-b16f-c3128ef6595c",
+      "title": "Gimme Gimme Gimme",
+      "artist": "ABBA",
+      "length": 307,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "6",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Discofox",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "120",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "e9f234cc-9d01-4617-bb4d-2673cff44e2f",
+      "title": "Grace Kelly",
+      "artist": "MIKA",
+      "length": 183,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Julian",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "1",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Cha cha cha",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "123",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "e6184fd3-08c5-48b3-b84b-1d36c3c70149",
+      "title": "Great Balls of Fire",
+      "artist": "Jerry Lee Lewis",
+      "length": 164,
+      "properties": {
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "165",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "4ee6baa4-4996-44e9-a328-cf2eff342f02",
+      "title": "Griechischer Wein",
+      "artist": "Udo Jürgens",
+      "length": 254,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "11",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Foxtrott",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "78",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "ac69c54f-8fc4-402b-bcb8-7ea698de5c2e",
+      "notes": "Daniel Cajon",
+      "title": "Ham kummst",
+      "artist": "Seiler und Speer",
+      "length": 272,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "18",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "125",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "48aae34d-711e-45aa-b811-32ced8da0962",
+      "notes": "\"Na na na na\" Mary, Lucas Backings",
+      "title": "Hey Jude",
+      "artist": "The Beatles",
+      "length": 320,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Julian",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "20",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "74",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "6f17152b-d77f-4d00-8acf-84e4719d2fcc",
+      "title": "Hold the line",
+      "artist": "Toto",
+      "length": 236,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Julian",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "7",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "98",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "14fb370d-5f1c-48a0-97f6-47facaf535dd",
+      "title": "Holiday",
+      "artist": "Green Day",
+      "length": 213,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Julian",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "163",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "9133c3f9-72c4-4793-9c7a-687068325516",
+      "title": "Hollywood Hills",
+      "artist": "Sunrise Avenue",
+      "length": 210,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "999",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Discofox",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "bd9c0e8a-1025-4b85-8a83-0653a06f99cc",
+      "title": "Hooked on a feeling",
+      "artist": "Blue Swede, Bkörn Skifs",
+      "length": 172,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "80d9d7f9-1a71-45ba-9ffa-677c725ef6d3",
+      "title": "Hot stuff",
+      "artist": "Donna Summer",
+      "length": 314,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "7",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "120",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "8d543dee-05fc-48b1-bd4a-5d3d3f9cad59",
+      "title": "Hotel California",
+      "artist": "The Eagles",
+      "length": 381,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Julian",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "5",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "74",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "bd1ebef2-464f-4fac-882e-2ce7292c4e1b",
+      "title": "Hurra die Schule brennt",
+      "artist": "Extrabreit",
+      "length": 154,
+      "properties": {
+        "8953f380-58af-401d-b715-f713bb9b30e7": "999",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "e0f326a5-7491-49fc-80fa-ccc2c0c67e18",
+      "title": "I will survive",
+      "artist": "Gloria Gaynor",
+      "length": 321,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "14",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Discofox",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "116",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "a0f58cf5-16c9-4499-80a0-923adbcc2b8f",
+      "title": "Irgendwie Irgendwo Irgendwann",
+      "artist": "Nena",
+      "length": 234,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "13",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "106",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "a98ac2a4-f743-4007-8088-1e8975bbf267",
+      "title": "It's my life",
+      "artist": "Bon Jovi",
+      "length": 224,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "16",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Cha cha cha",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "120",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "0da86953-910c-46d5-9534-af9cef0e6eba",
+      "title": "Jailhouse Rock",
+      "artist": "The Blues Brothers",
+      "length": 217,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "186",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "ef5c41e2-ca46-4536-b696-3ea2d763b764",
+      "title": "Jerk it out",
+      "artist": "Caesars",
+      "length": 201,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Jakob"
+        ],
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "134",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "1ad99f71-f717-4fca-af91-800748f56745",
+      "title": "Jetlag",
+      "artist": "Simple Plan",
+      "length": 204,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "4",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "146",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "aa526ed1-c056-455c-9b7f-a9bb67e8cd1d",
+      "title": "Jump",
+      "artist": "Van Halen",
+      "length": 239,
+      "properties": {
+        "8953f380-58af-401d-b715-f713bb9b30e7": "999",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "66efcc88-733f-49c5-91ca-cacd054d2b6c",
+      "title": "Just the two of us",
+      "artist": "Grover Washington",
+      "length": 269,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "3",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "95",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "d4134480-b2a1-4a18-8271-c3e61d873ae5",
+      "title": "Levitating",
+      "artist": "Dua Lipa",
+      "length": 207,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Julian",
+          "Jakob"
+        ],
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "103",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "5b1ed560-6579-4747-9c0c-c0d2e5094ee6",
+      "notes": "Flo Trompete",
+      "title": "Little talks",
+      "artist": "Of Monsters and Men",
+      "length": 266,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "ohne",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "2",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Foxtrott",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "210",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "d8f1fc1f-7e31-4caa-87a2-53c5264ff7b6",
+      "title": "Livin' on a prayer",
+      "artist": "Bon Jovi",
+      "length": 250,
+      "properties": {
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "dfc88d5e-41e4-4a0b-9baa-9ba98456cf68",
+      "title": "Major Tom",
+      "artist": "Peter Schilling",
+      "length": 286,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "17",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "163",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "5d3c5778-63e1-479a-aa74-88ac998766da",
+      "title": "Mamma Mia",
+      "artist": "ABBA",
+      "length": 215,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Julian",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "9",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "135",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "1a654631-cff2-4d8c-be8a-1f2a6b63e016",
+      "title": "Mit 66 Jahren",
+      "artist": "Udo Jürgens",
+      "length": 232,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "8",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "128",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "331e2857-da9f-426a-bd20-ed32c810a031",
+      "title": "Money for nothing",
+      "artist": "Dire Straits",
+      "length": 316,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Julian",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "10",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "135",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "d2f10014-79bf-407a-87fe-ddacf5cba59b",
+      "title": "More than you know",
+      "artist": "Axwell /\\ Ingrosso",
+      "length": 209,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Cha cha cha",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "60c17a24-5a8e-4fe9-9362-36cf3aa8ba17",
+      "title": "Mr. Brightside",
+      "artist": "The Killers",
+      "length": 262,
+      "properties": {
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "148",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "af8d89c5-e2e6-4e36-96e8-86594c2f05b9",
+      "title": "Narcotic",
+      "artist": "Liquido",
+      "length": 252,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "15",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Foxtrott",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "102",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "f0b42640-7e94-4774-a638-fc2621ec43cb",
+      "title": "Ohne dich",
+      "artist": "Münchner Freiheit",
+      "length": 234,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "20",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "89",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "b9ef7045-b2a0-436d-bf36-16f0b1633d43",
+      "title": "Papaoutai",
+      "artist": "Stromae",
+      "length": 232,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "3",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "116",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "dfe63438-4c53-4095-b122-7da3b0291a98",
+      "title": "Perfekte Welle",
+      "artist": "Juli",
+      "length": 205,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "112",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "70ec8051-540c-4a93-b7ed-4b026ae76238",
+      "notes": "Flo Mundharmonika",
+      "title": "Piano Man",
+      "artist": "Billy Joel",
+      "length": 324,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "ohne",
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "7",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Walzer",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "175",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Jakob"
+      }
+    },
+    {
+      "id": "f0117f8c-af3a-4bd9-b2e4-50bf173305ed",
+      "title": "Que sera sera",
+      "artist": "Doris Day",
+      "length": 176,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Walzer",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "178",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "ee525305-91e2-46ad-bcdd-c3235d262d53",
+      "title": "Rock around the clock",
+      "artist": "Bill Haley & His Comets",
+      "length": 195,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "10",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "175",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "30bee583-87f1-4081-b41c-ca40fce9b39b",
+      "title": "Rockin' all over the world",
+      "artist": "Status Quo",
+      "length": 216,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "8",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "130",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "6a7ce020-d4ee-4446-bbd8-0ea802c145f8",
+      "title": "Rolling in the deep",
+      "artist": "Adele",
+      "length": 228,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Julian",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "2",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Foxtrott",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "105",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "9e58eed1-ba17-4878-b9eb-819fbacc4fa6",
+      "title": "Ruby",
+      "artist": "Kaiser Chiefs",
+      "length": 195,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "1",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Foxtrott",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "93",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "ce330c58-4f75-40b7-9788-ad14c072892e",
+      "title": "S&M",
+      "artist": "Rihanna",
+      "length": 240,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Jakob"
+        ],
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "128",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "3d18987f-9022-4abc-83f0-1293212b83be",
+      "title": "Sarà perché ti amo",
+      "artist": "Ricchi & Poveri",
+      "length": 190,
+      "properties": {
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "0706fe30-861f-4623-8c63-c77ab2a81a8f",
+      "title": "Schickeria",
+      "artist": "Spider Murphy Gang",
+      "length": 286,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "6",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Quickstep",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "208",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "e0d0c529-09af-408c-85d9-7e55caf74382",
+      "notes": "Luisa Hauptstimme Prechorus",
+      "title": "Schrei nach Liebe",
+      "artist": "Die Ärzte",
+      "length": 196,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "888",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "a7102f49-56df-405e-897b-3902aea07b3c",
+      "title": "Se bastasse una canzone",
+      "artist": "Eros Ramazotti",
+      "length": 333,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Julian",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "5",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Walzer",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "155",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "2b8a14c7-d20b-4759-90cd-708dc4126213",
+      "notes": "Genre Medley",
+      "title": "Seven nation army",
+      "artist": "The White Stripes",
+      "length": 600,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "888",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Walzer",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "132",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "618b5de0-ef45-46a6-b8c8-c92c6b2df6af",
+      "title": "Seven Nation Army Walzer",
+      "artist": "Seven Heaven",
+      "length": 334,
+      "properties": {
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Julian",
+          "Jakob"
+        ],
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "132",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "8d13bf9e-4e41-4ee1-b2a0-5411d42dd08b",
+      "title": "Sex on fire",
+      "artist": "Kings of Leon",
+      "length": 205,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "12",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "154",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "0dd5f809-3386-4cae-aa40-61565f9f2d07",
+      "title": "Shallow",
+      "artist": "Lady Gaga",
+      "length": 221,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "98",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (sonst.)"
+      }
+    },
+    {
+      "id": "fc3e64da-2d2e-4b3b-a593-b1dd492f3c0e",
+      "title": "Shut up and dance",
+      "artist": "WALK THE MOON",
+      "length": 218,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "9",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Discofox",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "128",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "f63f0660-d085-4332-8f5e-42e1bf344cbe",
+      "title": "Skandal im Sperrbezirk",
+      "artist": "Spider Murphy Gang",
+      "length": 229,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "17",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "181",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "173351e5-5977-4763-bcda-778cf5a623ea",
+      "title": "Skyfall",
+      "artist": "Adele",
+      "length": 289,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "5",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "75",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "59de2f6d-2962-48b5-a5cb-691d0765cc39",
+      "title": "So What",
+      "artist": "P!nk",
+      "length": 222,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "9",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "126",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "224231b6-86de-4d92-b1c9-facc5f0adec5",
+      "title": "Sommer in der Stadt",
+      "artist": "Spider Murphy Gang",
+      "length": 189,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "cc58c33b-37f3-4fcb-b84f-4999a4a18b55",
+      "title": "Sternenhimmel",
+      "artist": "Hubert Kah",
+      "length": 209,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "12",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "190",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "184af6e8-fc3c-4197-bde8-b438250f0e56",
+      "title": "Summer of '69",
+      "artist": "Bryan Adams",
+      "length": 216,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Discofox",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "140",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "39f5f2e3-6cf7-4407-8828-7ce78cfc4697",
+      "title": "Sweet Caroline",
+      "artist": "DJ Ötzi",
+      "length": 226,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "13",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Discofox",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "129",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "eeda26fe-beb3-4cae-89ad-344e03f37d7c",
+      "title": "Sweet home Chicago",
+      "artist": "The Blues Brothers",
+      "length": 420,
+      "properties": {
+        "8953f380-58af-401d-b715-f713bb9b30e7": "999",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "16b28d4e-5cfe-47cb-88ae-381365fc7e07",
+      "title": "Tage wie diese",
+      "artist": "Die Toten Hosen",
+      "length": 282,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "12",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "98",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "8494ecdf-0fca-491f-9e7d-0fa4edbf246b",
+      "notes": "Jakob Saxophon Solo (Lucas Mic)",
+      "title": "The Best",
+      "artist": "Tina Turner",
+      "length": 252,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Julian",
+          "Jakob"
+        ],
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "104",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "598722d1-63d3-4f84-88d7-0daaefd97753",
+      "notes": "Flo Trompete am Anfang",
+      "title": "The greatest show",
+      "artist": "The Greatest Showman",
+      "length": 302,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Julian",
+          "Jakob",
+          "Daniel"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "888",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "154",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "3375f777-7bf9-4594-8537-0723664eae02",
+      "title": "This is the life",
+      "artist": "Amy Macdonald",
+      "length": 186,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "3",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Quickstep",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "190",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "bddc1948-d36c-4087-b143-f63ba49084e4",
+      "notes": "Lucas Refrain Backings",
+      "title": "This love",
+      "artist": "Maroon 5",
+      "length": 207,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "4",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Foxtrott",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "95",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "cec5c574-3266-480b-a426-443347031a81",
+      "title": "Time Warp",
+      "artist": "Rocky Horror Picture Show",
+      "length": 293,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "8",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "172",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    },
+    {
+      "id": "77de8eb6-1805-4667-af20-b4d17e46b0df",
+      "title": "Viva la vida",
+      "artist": "Coldplay",
+      "length": 242,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Julian",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "99",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "a82fefdd-b12f-481b-9c33-5af6568c8500",
+      "notes": "Jakob Beatbox",
+      "title": "Vo Mello bis ge Schoppornou",
+      "artist": "Holstuonarmusicbigbandclub",
+      "length": 263,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "888",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "133",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "92a418dc-6c57-4877-bb0d-a95b13da43dc",
+      "title": "Waterloo",
+      "artist": "ABBA",
+      "length": 168,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "8953f380-58af-401d-b715-f713bb9b30e7": "999",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "4cf30068-8e56-48f2-97c8-2de76948e0cf",
+      "title": "Weiß der Geier",
+      "artist": "Wolfgang Petry",
+      "length": 221,
+      "properties": {
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "9b04b08f-2aba-415a-a23a-9ccabcfbcac6",
+      "title": "Westerland",
+      "artist": "Die Ärzte",
+      "length": 232,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Mary",
+          "Jakob"
+        ],
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "189",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Lucas"
+      }
+    },
+    {
+      "id": "fdb78d39-c1ae-46de-8463-31c0bbbc6c18",
+      "notes": "Jakob Saxophon",
+      "title": "Weusd' a Herz hast",
+      "artist": "Rainhard Fendrich",
+      "length": 199,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "18",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "68",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Synth (Nord)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "75d113a8-e7c7-49fd-b1e6-5c3d321781b3",
+      "title": "What's up",
+      "artist": "4 Non Blondes",
+      "length": 313,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a": true,
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "18",
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Rumba",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "134",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "666187c1-93c6-4479-a31a-f6e3442791df",
+      "title": "Whatever it takes",
+      "artist": "Imagine Dragons",
+      "length": 201,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas",
+          "Mary",
+          "Jakob"
+        ],
+        "81bb8a14-5857-46e5-b91e-25c97f03d9ec": true,
+        "8953f380-58af-401d-b715-f713bb9b30e7": "4",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Jive",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "f217fa7c-dbe3-4695-ab0b-7c3eb342e16b",
+      "title": "Willst du",
+      "artist": "Alligatoah",
+      "length": 224,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "blau",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Lucas"
+        ],
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "126",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Jakob"
+      }
+    },
+    {
+      "id": "da1a666c-964a-4d65-8894-7813d5e7ef14",
+      "title": "Wonderwall",
+      "artist": "Oasis",
+      "length": 258,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "akustik",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "999",
+        "8ae3b02c-f264-4a33-85f9-583f2d22b068": true,
+        "a88a16f8-6d56-41af-b24f-64b715a70c26": "Foxtrott",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Beide",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Julian"
+      }
+    },
+    {
+      "id": "0b1aca47-442a-4e58-a932-618b36fac75a",
+      "title": "Zombie",
+      "artist": "The Cranberries",
+      "length": 315,
+      "properties": {
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "84",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Mary"
+      }
+    },
+    {
+      "id": "595be339-4c95-44ef-8aec-88982aaeb5c8",
+      "title": "Zruck zu dir",
+      "artist": "Nickerbocker, Biene",
+      "length": 222,
+      "properties": {
+        "4e45de43-2e2d-4927-b391-bfa4c05e3938": "schwarz",
+        "798b6d62-0057-41c0-82fd-0ff261b7794f": [
+          "Jakob"
+        ],
+        "8953f380-58af-401d-b715-f713bb9b30e7": "16",
+        "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c": "130",
+        "c97f4407-b049-48e5-aa30-2c0f77180167": "Piano (Yamaha)",
+        "eac0201e-5770-49e7-ac99-176f8179609e": "Duett (Mary/Lucas)"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "aebaff0d-dcc0-4cbb-81f4-2f37c0a1467c",
+      "show": true,
+      "type": "number",
+      "title": "BPM",
+      "valueRange": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200
+      ]
+    },
+    {
+      "id": "eac0201e-5770-49e7-ac99-176f8179609e",
+      "show": true,
+      "type": "string",
+      "title": "Leadsinger",
+      "valueRange": [
+        "Lucas",
+        "Mary",
+        "Julian",
+        "Jakob",
+        "Duett (Mary/Lucas)",
+        "Duett (sonst.)"
+      ]
+    },
+    {
+      "id": "8953f380-58af-401d-b715-f713bb9b30e7",
+      "show": true,
+      "type": "number",
+      "title": "Song-Block",
+      "valueRange": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100
+      ]
+    },
+    {
+      "id": "798b6d62-0057-41c0-82fd-0ff261b7794f",
+      "show": false,
+      "type": "stringMultiple",
+      "title": "Backingvocals",
+      "valueRange": [
+        "Lucas",
+        "Mary",
+        "Julian",
+        "Jakob",
+        "Daniel"
+      ]
+    },
+    {
+      "id": "4e45de43-2e2d-4927-b391-bfa4c05e3938",
+      "show": true,
+      "type": "string",
+      "title": "Flo Gitarre",
+      "valueRange": [
+        "akustik",
+        "schwarz",
+        "blau",
+        "ohne"
+      ]
+    },
+    {
+      "id": "c97f4407-b049-48e5-aa30-2c0f77180167",
+      "show": true,
+      "type": "string",
+      "title": "Keyboards",
+      "valueRange": [
+        "Piano (Yamaha)",
+        "Synth (Nord)",
+        "Beide"
+      ]
+    },
+    {
+      "id": "8ae3b02c-f264-4a33-85f9-583f2d22b068",
+      "show": false,
+      "type": "bool",
+      "title": "Leo Bass",
+      "valueRange": [
+        true,
+        false
+      ]
+    },
+    {
+      "id": "a88a16f8-6d56-41af-b24f-64b715a70c26",
+      "show": false,
+      "type": "string",
+      "title": "Tanzart",
+      "valueRange": [
+        "Cha cha cha",
+        "Quickstep",
+        "Jive",
+        "Rumba",
+        "Discofox",
+        "Foxtrott",
+        "Walzer"
+      ]
+    },
+    {
+      "id": "81bb8a14-5857-46e5-b91e-25c97f03d9ec",
+      "show": false,
+      "type": "bool",
+      "title": "13.04.24",
+      "valueRange": [
+        true,
+        false
+      ]
+    },
+    {
+      "id": "6c57ae66-ddf4-4ad9-999f-88b59dd5cf7a",
+      "show": false,
+      "type": "bool",
+      "title": "3.5.24",
+      "valueRange": [
+        true,
+        false
+      ]
+    }
+  ]
+}
