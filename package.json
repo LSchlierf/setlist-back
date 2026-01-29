@@ -7,6 +7,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/express-http-proxy": "^1.6.7",
+    "@types/pg": "^8.16.0",
+    "@zenstackhq/orm": "^3.2.1",
     "body-parser": "^2.2.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
@@ -15,9 +18,17 @@
     "http": "^0.0.1-security",
     "https": "^1.0.0",
     "jsonwebtoken": "^9.0.2",
+    "pg": "^8.17.2",
     "pg-promise": "^11.15.0",
+    "prisma": "6.19.2",
     "server": "^1.0.42",
     "socket.io": "^4.8.1",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "zenstack": "^2.22.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@zenstackhq/cli": "^3.2.1"
   }
 }

@@ -1,0 +1,189 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DBURL")
+}
+
+generator client {
+    provider = "prisma-client"
+    output   = "./generated"
+}
+
+model band {
+    id         String     @id @default(uuid())
+    name       String     @unique
+    passsalt   String
+    passhash   String
+    // repertoire (implicit)
+    categories category[]
+    // colors     color[]
+    songs      song[]
+    setlists   setlist[]
+}
+
+// Repertoire
+
+model song {
+    id                     String                   @id @default(uuid())
+    title                  String                   @unique
+    artist                 String
+    length                 Int
+    booleanProperties      booleanProperty[]
+    numberProperties       numberProperty[]
+    stringProperties       stringProperty[]
+    multipleStringProperty multipleStringProperty[]
+    band                   band                     @relation(fields: [bandId], references: [id])
+    bandId                 String
+    setSpots               setSpot[]
+    // color                  color?                   @relation(fields: [colorId], references: [id])
+    // colorId                String
+}
+
+// model color {
+//     id       String @id @default(uuid())
+//     hexValue String
+//     band     band   @relation(fields: [bandId], references: [id])
+//     bandId   String
+//     songs    song[]
+// }
+
+// Setlists
+
+model setlist {
+    id          String    @id @default(uuid())
+    band        band      @relation(fields: [bandId], references: [id])
+    bandId      String
+    setSpots    setSpot[]
+    name        String    @default("new setlist")
+    breakLen    Int       @default(20)
+    breakBuffer Int       @default(5)
+    fixedTime   fixedTime @default(START)
+    startTime   String    @default("19:00")
+    deletedAt   DateTime?
+}
+
+enum fixedTime {
+    START
+    END
+}
+
+model setSpot {
+    song      song    @relation(fields: [songId], references: [id], onDelete: Cascade)
+    songId    String
+    setlist   setlist @relation(fields: [setlistId], references: [id], onDelete: Cascade)
+    setlistId String
+    set       Int
+    spotPrio  Float
+    @@unique([songId, setlistId])
+}
+
+// Categories
+
+model category {
+    band   band    @relation(fields: [bandId], references: [id])
+    bandId String
+    id     String  @id @default(uuid())
+    title  String
+    show   Boolean
+    type   String
+    @@delegate(type)
+}
+
+model booleanCategory extends category {
+    values booleanCategoryValue[]
+    // properties booleanProperty[]
+}
+
+model booleanCategoryValue {
+    id         String            @id @default(uuid())
+    category   booleanCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    categoryId String
+    value      Boolean
+    properties booleanProperty[]
+    @@unique([categoryId, value])
+}
+
+model booleanProperty {
+    value   booleanCategoryValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
+    valueId String
+    // category   booleanCategory      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    // categoryId String
+    song    song                 @relation(fields: [songId], references: [id], onDelete: Cascade)
+    songId  String
+    @@unique([valueId, songId])
+    // @@unique([categoryId, songId])
+}
+
+model numberCategory extends category {
+    values numberCategoryValue[]
+    // properties numberProperty[]
+}
+
+model numberCategoryValue {
+    id         String           @id @default(uuid())
+    category   numberCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    categoryId String
+    value      Int
+    properties numberProperty[]
+    @@unique([categoryId, value])
+}
+
+model numberProperty {
+    value   numberCategoryValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
+    valueId String
+    // category   numberCategory      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    // categoryId String
+    song    song                @relation(fields: [songId], references: [id], onDelete: Cascade)
+    songId  String
+    @@unique([valueId, songId])
+    // @@unique([categoryId, songId])
+}
+
+model stringCategory extends category {
+    values stringCategoryValue[]
+    // properties stringProperty[]
+}
+
+model stringCategoryValue {
+    id         String           @id @default(uuid())
+    category   stringCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    categoryId String
+    value      String
+    properties stringProperty[]
+    @@unique([categoryId, value])
+}
+
+model stringProperty {
+    value   stringCategoryValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
+    valueId String
+    // category   stringCategory      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    // categoryId String
+    song    song                @relation(fields: [songId], references: [id], onDelete: Cascade)
+    songId  String
+    @@unique([valueId, songId])
+    // @@unique([categoryId, songId])
+}
+
+model multipleStringCategory extends category {
+    values multipleStringCategoryValue[]
+    // properties multipleStringProperty[]
+}
+
+model multipleStringCategoryValue {
+    id         String                   @id @default(uuid())
+    category   multipleStringCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    categoryId String
+    value      String
+    properties multipleStringProperty[]
+    @@unique([categoryId, value])
+}
+
+model multipleStringProperty {
+    value   multipleStringCategoryValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
+    valueId String
+    // category   multipleStringCategory      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    // categoryId String
+    song    song                        @relation(fields: [songId], references: [id], onDelete: Cascade)
+    songId  String
+    @@unique([valueId, songId])
+    // @@unique([categoryId, songId])
+}

@@ -4,3 +4,7 @@ node_modules
 *.bak
 cleanup.sh
 start-dev.sh
+.vscode
+zenstack/*
+!zenstack/utils.ts
+!zenstack/seed.ts
