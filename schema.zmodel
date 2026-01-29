@@ -27,6 +27,7 @@ model song {
     title                    String                   @unique
     artist                   String
     length                   Int
+    notes                    String                   @default('')
     booleanProperties        booleanProperty[]
     numberProperties         numberProperty[]
     stringProperties         stringProperty[]
