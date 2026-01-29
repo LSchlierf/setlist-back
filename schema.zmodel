@@ -23,17 +23,17 @@ model band {
 // Repertoire
 
 model song {
-    id                     String                   @id @default(uuid())
-    title                  String                   @unique
-    artist                 String
-    length                 Int
-    booleanProperties      booleanProperty[]
-    numberProperties       numberProperty[]
-    stringProperties       stringProperty[]
-    multipleStringProperty multipleStringProperty[]
-    band                   band                     @relation(fields: [bandId], references: [id])
-    bandId                 String
-    setSpots               setSpot[]
+    id                       String                   @id @default(uuid())
+    title                    String                   @unique
+    artist                   String
+    length                   Int
+    booleanProperties        booleanProperty[]
+    numberProperties         numberProperty[]
+    stringProperties         stringProperty[]
+    multipleStringProperties multipleStringProperty[]
+    band                     band                     @relation(fields: [bandId], references: [id])
+    bandId                   String
+    setSpots                 setSpot[]
     // color                  color?                   @relation(fields: [colorId], references: [id])
     // colorId                String
 }

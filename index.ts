@@ -11,7 +11,13 @@ import { Server } from "socket.io";
 import proxy from "express-http-proxy";
 
 import dotenv from "dotenv";
-import { ingestRepertoire, ingestSetlist } from "./utils/importExport.ts";
+import {
+  egressCategories,
+  egressRepertoire,
+  egressSongs,
+  ingestRepertoire,
+  ingestSetlist,
+} from "./utils/importExport.ts";
 
 dotenv.config();
 
@@ -167,16 +173,27 @@ userRouter.get("/ping", async (req: authenticatedRequest, res) => {
 });
 
 userRouter.get("/repertoire", async (req: authenticatedRequest, res) => {
-  const repertoire = await db.band.findFirst({
-    where: {
-      id: req.bandId,
-    },
-    include: {
-      songs: true,
-    },
-  });
+  const bandId = req.bandId!;
 
-  res.sendStatus(501); // TODO
+  res.status(200);
+  res.json(await egressRepertoire(db, bandId));
+});
+
+userRouter.get(
+  "/repertoire/categories",
+  async (req: authenticatedRequest, res) => {
+    const bandId = req.bandId!;
+
+    res.status(200);
+    res.json(await egressCategories(db, bandId));
+  }
+);
+
+userRouter.get("/repertoire/songs", async (req: authenticatedRequest, res) => {
+  const bandId = req.bandId!;
+
+  res.status(200);
+  res.json(await egressSongs(db, bandId));
 });
 
 userRouter.get("/repertoire/size", async (req: authenticatedRequest, res) => {
@@ -208,6 +225,7 @@ userRouter.get("/setlists", async (req: authenticatedRequest, res) => {
       breakLen: true,
       fixedTime: true,
       startTime: true,
+      deletedAt: true,
     },
     include: {
       setSpots: {
@@ -295,9 +313,10 @@ userRouter.get(
 );
 
 userRouter.get("/repertoire/export", async (req: authenticatedRequest, res) => {
-  const bandId = req.bandId;
+  const bandId = req.bandId!;
 
-  res.sendStatus(501); // TODO
+  res.status(200);
+  res.json(await egressRepertoire(db, bandId));
 });
 
 userRouter.post("/setlist/create", async (req: authenticatedRequest, res) => {

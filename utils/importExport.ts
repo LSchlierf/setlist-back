@@ -14,6 +14,14 @@ interface property {
   value: any;
 }
 
+function convertMapToObject(input: Map<string, any>) {
+  const obj: { [key: string]: any } = {};
+  input.forEach((v, k) => {
+    obj[k] = v;
+  });
+  return obj;
+}
+
 export async function ingestRepertoire(
   db: ReturnType<typeof createZenStackClient>,
   bandId: string,
@@ -163,6 +171,111 @@ export async function ingestRepertoire(
         break;
     }
   }
+}
+
+export async function egressSongs(
+  db: ReturnType<typeof createZenStackClient>,
+  bandId: string
+) {
+  const propertyQuery = {
+    include: {
+      value: {
+        omit: {
+          id: true,
+        },
+      },
+    },
+    omit: {
+      songId: true,
+      valueId: true,
+    },
+  };
+
+  const songs = (
+    await db.song.findMany({
+      where: {
+        bandId: bandId,
+      },
+      include: {
+        booleanProperties: propertyQuery,
+        numberProperties: propertyQuery,
+        stringProperties: propertyQuery,
+        multipleStringProperties: propertyQuery,
+      },
+      omit: {
+        bandId: true,
+      },
+    })
+  ).map((s) => ({
+    ...s,
+    booleanProperties: undefined,
+    numberProperties: undefined,
+    stringProperties: undefined,
+    multipleStringProperties: undefined,
+    properties: convertMapToObject(
+      new Map(
+        [
+          ...s.booleanProperties,
+          ...s.numberProperties,
+          ...s.stringProperties,
+          ...s.multipleStringProperties,
+        ].map((p) => [p.value.categoryId, p.value.value])
+      )
+    ),
+  }));
+
+  return songs;
+}
+
+export async function egressCategories(
+  db: ReturnType<typeof createZenStackClient>,
+  bandId: string
+) {
+  const categoryQuery = {
+    where: {
+      bandId: bandId,
+    },
+    omit: {
+      bandId: true,
+    },
+    include: {
+      values: {
+        omit: {
+          categoryId: true,
+          id: true,
+        },
+      },
+    },
+  };
+
+  const categories = (
+    await Promise.all([
+      db.booleanCategory.findMany(categoryQuery),
+      db.numberCategory.findMany(categoryQuery),
+      db.stringCategory.findMany(categoryQuery),
+      db.multipleStringCategory.findMany(categoryQuery),
+    ])
+  )
+    .map((cs) =>
+      cs.map((c) => ({
+        ...c,
+        values: undefined,
+        valueRange: c.values.map((v) => v.value),
+      }))
+    )
+    .flat();
+
+  return categories;
+}
+
+export async function egressRepertoire(
+  db: ReturnType<typeof createZenStackClient>,
+  bandId: string
+) {
+  return {
+    categories: await egressCategories(db, bandId),
+    songs: await egressSongs(db, bandId),
+  };
 }
 
 export async function ingestSetlist(
