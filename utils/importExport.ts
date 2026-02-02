@@ -1,3 +1,4 @@
+import { title } from "process";
 import { createZenStackClient } from "../zenstack/utils.ts";
 
 interface song {
@@ -20,6 +21,14 @@ function convertMapToObject(input: Map<string, any>) {
     obj[k] = v;
   });
   return obj;
+}
+
+function convertMapToProperties(input: Map<string, string[]>) {
+  let ret = [] as { value: { categoryId: string; value: string[] } }[];
+  input.forEach((v, k) => {
+    ret.push({ value: { categoryId: k, value: v } });
+  });
+  return ret;
 }
 
 export async function ingestRepertoire(
@@ -205,6 +214,9 @@ export async function egressSongs(
       omit: {
         bandId: true,
       },
+      orderBy: {
+        title: "asc",
+      },
     })
   ).map((s) => ({
     ...s,
@@ -218,8 +230,23 @@ export async function egressSongs(
           ...s.booleanProperties,
           ...s.numberProperties,
           ...s.stringProperties,
-          ...s.multipleStringProperties,
-        ].map((p) => [p.value.categoryId, p.value.value])
+          ...convertMapToProperties(
+            s.multipleStringProperties.reduce<Map<string, string[]>>(
+              (map: Map<string, string[]>, currProp) => {
+                if (!map.has(currProp.value.categoryId)) {
+                  map.set(currProp.value.categoryId, []);
+                }
+                map.get(currProp.value.categoryId)!.push(currProp.value.value);
+                return map;
+              },
+              new Map<string, string[]>()
+            )
+          ),
+        ]
+          .flat()
+          .map((p) => {
+            return [p.value.categoryId, p.value.value];
+          })
       )
     ),
   }));
