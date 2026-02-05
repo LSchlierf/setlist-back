@@ -172,6 +172,61 @@ userRouter.get("/ping", async (req: authenticatedRequest, res) => {
   res.send({ id: req.bandId, name: band?.name });
 });
 
+userRouter.post("/changePassword", async (req: authenticatedRequest, res) => {
+  const bandId = req.bandId;
+
+  if (!req.body) {
+    return res.sendStatus(400);
+  }
+
+  const { oldPassword, newPassword } = req.body;
+
+  if (!oldPassword || !newPassword) {
+    return res.sendStatus(400);
+  }
+
+  const band = await db.band.findFirst({
+    where: {
+      id: bandId,
+    },
+  });
+
+  if (!band) {
+    return res.sendStatus(400);
+  }
+  const { passhash, passsalt } = band;
+  const testHash = crypt
+    .createHash("sha512")
+    .update(oldPassword)
+    .update(passsalt)
+    .digest()
+    .toString("hex");
+  if (passhash !== testHash) {
+    res.sendStatus(403);
+    return;
+  }
+
+  const newSalt = crypt.randomBytes(16).toString("hex");
+  const newHash = crypt
+    .createHash("sha512")
+    .update(newPassword)
+    .update(newSalt)
+    .digest()
+    .toString("hex");
+
+  await db.band.update({
+    where: {
+      id: bandId,
+    },
+    data: {
+      passhash: newHash,
+      passsalt: newSalt,
+    },
+  });
+
+  res.sendStatus(200);
+});
+
 userRouter.get("/repertoire", async (req: authenticatedRequest, res) => {
   const bandId = req.bandId!;
 
@@ -280,7 +335,7 @@ userRouter.post(
     const bandId = req.bandId!;
 
     try {
-      ingestRepertoire(db, bandId, repertoire);
+      await ingestRepertoire(db, bandId, repertoire);
       res.sendStatus(200);
     } catch (e) {
       console.log("Exception occured during ingest setlist:", e);
@@ -294,7 +349,7 @@ userRouter.post("/setlist/ingest", async (req: authenticatedRequest, res) => {
   const bandId = req.bandId!;
 
   try {
-    ingestSetlist(db, bandId, setlist);
+    await ingestSetlist(db, bandId, setlist);
     res.sendStatus(200);
   } catch (e) {
     console.log("Exception occured during ingest setlist:", e);
@@ -382,9 +437,56 @@ io.on("connection", (socket) => {
   } catch {
     return;
   }
-  const username = payload.username;
+  const bandId = payload.bandId;
 
-  socket.join(username);
+  console.log("band connect:", bandId);
+
+  socket.join(bandId);
+
+  socket.on("repertoire", () => {
+    socket.to(bandId).emit("repertoire");
+  });
+
+  socket.on("repertoire:updateSong", async (newSong) => {
+    try {
+      console.log(newSong);
+      const data = {
+        ...newSong,
+        properties: undefined,
+      };
+
+      // TODO: UPDATE PROPERTIES
+
+      await db.song.update({
+        where: {
+          id: newSong.id as string,
+          bandId: bandId,
+        },
+        data: data,
+      });
+      socket.to(bandId).emit("repertoire:updateSong", newSong);
+    } catch {
+      socket.to(bandId).emit("repertoire");
+    }
+  });
+
+  socket.on("repertoire:deleteSong", async (deletedSongId) => {
+    try {
+      await db.song.delete({
+        where: {
+          id: deletedSongId,
+          bandId: bandId,
+        },
+      });
+      socket.to(bandId).emit("repertoire:deleteSong", deletedSongId);
+    } catch {
+      socket.to(bandId).emit("repertoire");
+    }
+  });
+
+  socket.on("disconnect", () => {
+    console.log("band disconnect");
+  });
 });
 
 app.use(express.static("/acme", { dotfiles: "allow" }));
