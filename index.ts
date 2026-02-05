@@ -51,6 +51,23 @@ if (!process.env.DEV) {
 
 type authenticatedRequest = express.Request & { bandId?: string };
 
+type song = {
+  id: string;
+  title: string;
+  artist: string;
+  length: number;
+  notes: string;
+  properties: { [key: string]: any };
+};
+
+type category = {
+  id: string;
+  title: string;
+  show: boolean;
+  type: string;
+  valueRange: any[];
+};
+
 function generateToken(bandId: string) {
   return jwt.sign({ bandId: bandId }, process.env.KEY!, {
     expiresIn: "365d",
@@ -447,23 +464,133 @@ io.on("connection", (socket) => {
     socket.to(bandId).emit("repertoire");
   });
 
-  socket.on("repertoire:updateSong", async (newSong) => {
+  socket.on("repertoire:updateSong", async (newSong: song) => {
     try {
-      console.log(newSong);
       const data = {
         ...newSong,
         properties: undefined,
       };
 
-      // TODO: UPDATE PROPERTIES
+      const categories = await db.category.findMany({
+        where: {
+          bandId: bandId,
+        },
+        omit: {
+          bandId: true,
+          title: true,
+          show: true,
+        },
+      });
 
       await db.song.update({
         where: {
-          id: newSong.id as string,
+          id: newSong.id,
           bandId: bandId,
         },
-        data: data,
+        data: {
+          ...data,
+          booleanProperties: {
+            deleteMany: {
+              songId: newSong.id,
+            },
+          },
+          numberProperties: {
+            deleteMany: {
+              songId: newSong.id,
+            },
+          },
+          stringProperties: {
+            deleteMany: {
+              songId: newSong.id,
+            },
+          },
+          multipleStringProperties: {
+            deleteMany: {
+              songId: newSong.id,
+            },
+          },
+        },
       });
+
+      const getRelevantCategories = (
+        categoryType:
+          | "booleanCategory"
+          | "numberCategory"
+          | "stringCategory"
+          | "multipleStringCategory",
+        song: song
+      ) =>
+        categories
+          .filter((c) => c.type === categoryType)
+          .filter((c) => song.properties[c.id] !== undefined);
+
+      await db.song.update({
+        where: {
+          id: newSong.id,
+          bandId: bandId,
+        },
+        data: {
+          booleanProperties: {
+            create: getRelevantCategories("booleanCategory", newSong).map(
+              (c) => ({
+                value: {
+                  connect: {
+                    categoryId_value: {
+                      categoryId: c.id,
+                      value: newSong.properties[c.id] as boolean,
+                    },
+                  },
+                },
+              })
+            ),
+          },
+          numberProperties: {
+            create: getRelevantCategories("numberCategory", newSong).map(
+              (c) => ({
+                value: {
+                  connect: {
+                    categoryId_value: {
+                      categoryId: c.id,
+                      value: newSong.properties[c.id] as number,
+                    },
+                  },
+                },
+              })
+            ),
+          },
+          stringProperties: {
+            create: getRelevantCategories("stringCategory", newSong).map(
+              (c) => ({
+                value: {
+                  connect: {
+                    categoryId_value: {
+                      categoryId: c.id,
+                      value: newSong.properties[c.id] as string,
+                    },
+                  },
+                },
+              })
+            ),
+          },
+          multipleStringProperties: {
+            create: getRelevantCategories("multipleStringCategory", newSong)
+              .flatMap((c) =>
+                newSong.properties[c.id].map((v: string) => ({
+                  categoryId: c.id,
+                  value: v,
+                }))
+              )
+              .map((property: { categoryId: string; value: string }) => ({
+                value: {
+                  connect: {
+                    categoryId_value: property,
+                  },
+                },
+              })),
+          },
+        },
+      });
+
       socket.to(bandId).emit("repertoire:updateSong", newSong);
     } catch {
       socket.to(bandId).emit("repertoire");
@@ -479,6 +606,39 @@ io.on("connection", (socket) => {
         },
       });
       socket.to(bandId).emit("repertoire:deleteSong", deletedSongId);
+    } catch {
+      socket.to(bandId).emit("repertoire");
+    }
+  });
+
+  socket.on("repertoire:updateCategory", async (newCategory: category) => {
+    try {
+      await db.category.update({
+        where: {
+          id: newCategory.id,
+          bandId: bandId,
+        },
+        data: {
+          title: newCategory.title,
+          show: newCategory.show,
+        },
+      });
+
+      socket.to(bandId).emit("repertoire:updateCategory", newCategory);
+    } catch {
+      socket.to(bandId).emit("repertoire");
+    }
+  });
+
+  socket.on("repertoire:deleteCategory", async (deletedCategoryId: string) => {
+    try {
+      await db.category.delete({
+        where: {
+          id: deletedCategoryId,
+          bandId: bandId,
+        },
+      });
+      socket.to(bandId).emit("repertoire:deleteCategory", deletedCategoryId);
     } catch {
       socket.to(bandId).emit("repertoire");
     }
