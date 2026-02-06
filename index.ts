@@ -17,12 +17,12 @@ import {
   egressSongs,
   ingestRepertoire,
   ingestSetlist,
+  ingestSingleCategory,
 } from "./utils/importExport.ts";
 
 dotenv.config();
 
 let server: http.Server | https.Server;
-let io: Server;
 
 const db = createZenStackClient();
 const app = express();
@@ -43,11 +43,11 @@ if (!process.env.DEV) {
   };
 
   server = https.createServer(credentials, app);
-  io = new Server(server);
 } else {
   server = http.createServer(app);
-  io = new Server(server);
 }
+
+const io = new Server(server);
 
 type authenticatedRequest = express.Request & { bandId?: string };
 
@@ -630,6 +630,15 @@ io.on("connection", (socket) => {
         },
       });
       socket.to(bandId).emit("repertoire:deleteSong", deletedSongId);
+    } catch {
+      socket.to(bandId).emit("repertoire");
+    }
+  });
+
+  socket.on("repertoire:addCategory", async (newCategory: category) => {
+    try {
+      await ingestSingleCategory(db, bandId, newCategory);
+      socket.to(bandId).emit("repertoire:addCategory", newCategory);
     } catch {
       socket.to(bandId).emit("repertoire");
     }

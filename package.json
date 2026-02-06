@@ -6,6 +6,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "type": "module",
   "dependencies": {
     "@types/express-http-proxy": "^1.6.7",
     "@types/pg": "^8.16.0",

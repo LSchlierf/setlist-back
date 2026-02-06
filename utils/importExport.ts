@@ -1,11 +1,19 @@
-import { title } from "process";
 import { createZenStackClient } from "../zenstack/utils.ts";
+
+export type genericCategory = {
+  id: string;
+  title: string;
+  show: boolean;
+  type: string;
+  valueRange: any[];
+};
 
 interface song {
   id: string;
   title: string;
   artist: string;
   length: number;
+  notes?: string | undefined;
   properties: Record<string, boolean | string | string[]>;
 }
 
@@ -31,62 +39,13 @@ function convertMapToProperties(input: Map<string, string[]>) {
   return ret;
 }
 
-export async function ingestRepertoire(
+async function ingestCategories(
   db: ReturnType<typeof createZenStackClient>,
   bandId: string,
-  repertoire: any
+  categories: genericCategory[],
+  categoryToProperties: Map<string, property[]>
 ) {
-  // delete old repertoire
-  await db.category.deleteMany({
-    where: {
-      band: {
-        id: bandId,
-      },
-    },
-  });
-
-  await db.song.deleteMany({
-    where: {
-      band: {
-        id: bandId,
-      },
-    },
-  });
-
-  // songs
-
-  await db.song.createMany({
-    data: repertoire.songs.map((song: song) => ({
-      id: song.id,
-      title: song.title,
-      artist: song.artist,
-      length: song.length,
-      bandId: bandId,
-    })),
-  });
-
-  // prepare properties
-
-  const allProperties: property[] = repertoire.songs.flatMap((song: song) =>
-    Object.keys(song.properties).map((propKey) => ({
-      songId: song.id,
-      categoryId: propKey,
-      value: song.properties[propKey],
-    }))
-  );
-
-  const categoryToProperties = new Map<string, property[]>();
-
-  for (const property of allProperties) {
-    if (!categoryToProperties.has(property.categoryId)) {
-      categoryToProperties.set(property.categoryId, []);
-    }
-    categoryToProperties.get(property.categoryId)!.push(property);
-  }
-
-  // categories
-
-  for (const category of repertoire.categories) {
+  for (const category of categories) {
     const basicData = {
       id: category.id,
       title: category.title,
@@ -180,6 +139,78 @@ export async function ingestRepertoire(
         break;
     }
   }
+}
+
+export async function ingestRepertoire(
+  db: ReturnType<typeof createZenStackClient>,
+  bandId: string,
+  repertoire: any
+) {
+  // delete old repertoire
+  await db.category.deleteMany({
+    where: {
+      band: {
+        id: bandId,
+      },
+    },
+  });
+
+  await db.song.deleteMany({
+    where: {
+      band: {
+        id: bandId,
+      },
+    },
+  });
+
+  // songs
+
+  await db.song.createMany({
+    data: repertoire.songs.map((song: song) => ({
+      id: song.id,
+      title: song.title,
+      artist: song.artist,
+      length: song.length,
+      bandId: bandId,
+      notes: song.notes
+    })),
+  });
+
+  // prepare properties
+
+  const allProperties: property[] = repertoire.songs.flatMap((song: song) =>
+    Object.keys(song.properties).map((propKey) => ({
+      songId: song.id,
+      categoryId: propKey,
+      value: song.properties[propKey],
+    }))
+  );
+
+  const categoryToProperties = new Map<string, property[]>();
+
+  for (const property of allProperties) {
+    if (!categoryToProperties.has(property.categoryId)) {
+      categoryToProperties.set(property.categoryId, []);
+    }
+    categoryToProperties.get(property.categoryId)!.push(property);
+  }
+
+  // categories
+
+  await ingestCategories(
+    db,
+    bandId,
+    repertoire.categories,
+    categoryToProperties
+  );
+}
+
+export async function ingestSingleCategory(
+  db: ReturnType<typeof createZenStackClient>,
+  bandId: string,
+  category: genericCategory
+) {
+  await ingestCategories(db, bandId, [category], new Map());
 }
 
 export async function egressSongs(
