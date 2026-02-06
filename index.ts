@@ -464,6 +464,30 @@ io.on("connection", (socket) => {
     socket.to(bandId).emit("repertoire");
   });
 
+  socket.on("repertoire:addSong", async (newSong: song) => {
+    try {
+      const data = {
+        ...newSong,
+        properties: undefined,
+      };
+
+      await db.song.create({
+        data: {
+          ...data,
+          band: {
+            connect: {
+              id: bandId,
+            },
+          },
+        },
+      });
+
+      socket.to(bandId).emit("repertoire:addSong", newSong);
+    } catch {
+      socket.to(bandId).emit("repertoire");
+    }
+  });
+
   socket.on("repertoire:updateSong", async (newSong: song) => {
     try {
       const data = {
