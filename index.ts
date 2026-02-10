@@ -637,6 +637,7 @@ io.on("connection", (socket) => {
 
   socket.on("repertoire:addCategory", async (newCategory: category) => {
     try {
+      console.log(newCategory);
       await ingestSingleCategory(db, bandId, newCategory);
       socket.to(bandId).emit("repertoire:addCategory", newCategory);
     } catch {
@@ -675,6 +676,143 @@ io.on("connection", (socket) => {
     } catch {
       socket.to(bandId).emit("repertoire");
     }
+  });
+
+  socket.on(
+    "repertoire:setColors",
+    async ({
+      categoryId,
+      colors,
+    }: {
+      categoryId: string;
+      colors: { [key: string]: string };
+    }) => {
+      const category = await db.category.findFirst({
+        where: {
+          id: categoryId,
+          bandId: bandId,
+        },
+        omit: {
+          bandId: true,
+          id: true,
+          show: true,
+          title: true,
+        },
+      });
+
+      switch (category?.type) {
+        case "booleanCategory":
+          await db.booleanCategory.update({
+            where: {
+              id: categoryId,
+            },
+            data: {
+              values: {
+                update: Object.keys(colors).map((v) => ({
+                  where: {
+                    categoryId_value: {
+                      categoryId: categoryId,
+                      value: v === "true",
+                    },
+                  },
+                  data: {
+                    colorHex: colors[v],
+                  },
+                })),
+              },
+            },
+          });
+          break;
+        case "numberCategory":
+          await db.numberCategory.update({
+            where: {
+              id: categoryId,
+            },
+            data: {
+              values: {
+                update: Object.keys(colors).map((v) => ({
+                  where: {
+                    categoryId_value: {
+                      categoryId: categoryId,
+                      value: parseInt(v),
+                    },
+                  },
+                  data: {
+                    colorHex: colors[v],
+                  },
+                })),
+              },
+            },
+          });
+          break;
+        case "stringCategory":
+          await db.stringCategory.update({
+            where: {
+              id: categoryId,
+            },
+            data: {
+              values: {
+                update: Object.keys(colors).map((v) => ({
+                  where: {
+                    categoryId_value: {
+                      categoryId: categoryId,
+                      value: v,
+                    },
+                  },
+                  data: {
+                    colorHex: colors[v],
+                  },
+                })),
+              },
+            },
+          });
+          break;
+      }
+
+      socket.to(bandId).emit("repertoire:setColors", { categoryId, colors });
+    }
+  );
+
+  socket.on("repertoire:deleteColors", async (categoryId: string) => {
+    // try {
+    const category = await db.category.findFirst({
+      where: {
+        id: categoryId,
+        bandId: bandId,
+      },
+      omit: {
+        bandId: true,
+        id: true,
+        show: true,
+        title: true,
+      },
+    });
+
+    const query = {
+      where: {
+        categoryId: categoryId,
+      },
+      data: {
+        colorHex: null,
+      },
+    };
+
+    switch (category?.type) {
+      case "booleanCategory":
+        await db.booleanCategoryValue.updateMany(query);
+        break;
+      case "numberCategory":
+        await db.numberCategoryValue.updateMany(query);
+        break;
+      case "stringCategory":
+        await db.stringCategoryValue.updateMany(query);
+        break;
+    }
+
+    socket.to(bandId).emit("repertoire:deleteColors", categoryId);
+    // } catch {
+    // socket.to(bandId).emit("repertoire");
+    // }
   });
 
   socket.on("disconnect", () => {

@@ -6,6 +6,7 @@ export type genericCategory = {
   show: boolean;
   type: string;
   valueRange: any[];
+  colors?: { [key: string]: string } | undefined;
 };
 
 interface song {
@@ -54,12 +55,14 @@ async function ingestCategories(
     };
     switch (category.type) {
       case "bool":
+      case "booleanCategory":
         await db.booleanCategory.create({
           data: {
             ...basicData,
             values: {
               create: category.valueRange.map((v: boolean) => ({
                 value: v,
+                colorHex: category.colors?.[v.toString()],
                 properties: {
                   create:
                     categoryToProperties
@@ -75,12 +78,14 @@ async function ingestCategories(
         });
         break;
       case "number":
+      case "numberCategory":
         await db.numberCategory.create({
           data: {
             ...basicData,
             values: {
               create: category.valueRange.map((v: number) => ({
                 value: v,
+                colorHex: category.colors?.[v.toString()],
                 properties: {
                   create:
                     categoryToProperties
@@ -96,12 +101,14 @@ async function ingestCategories(
         });
         break;
       case "string":
+      case "stringCategory":
         await db.stringCategory.create({
           data: {
             ...basicData,
             values: {
               create: category.valueRange.map((v: string) => ({
                 value: v,
+                colorHex: category.colors?.[v],
                 properties: {
                   create:
                     categoryToProperties
@@ -117,12 +124,14 @@ async function ingestCategories(
         });
         break;
       case "stringMultiple":
+      case "multipleStringCategory":
         await db.multipleStringCategory.create({
           data: {
             ...basicData,
             values: {
               create: category.valueRange.map((v: string) => ({
                 value: v,
+                // colorHex: category.colors?.[v],
                 properties: {
                   create:
                     categoryToProperties
@@ -172,7 +181,7 @@ export async function ingestRepertoire(
       artist: song.artist,
       length: song.length,
       bandId: bandId,
-      notes: song.notes
+      notes: song.notes,
     })),
   });
 
@@ -288,7 +297,7 @@ export async function egressSongs(
 export async function egressCategories(
   db: ReturnType<typeof createZenStackClient>,
   bandId: string
-) {
+): Promise<genericCategory[]> {
   const categoryQuery = {
     where: {
       bandId: bandId,
@@ -311,7 +320,12 @@ export async function egressCategories(
       db.booleanCategory.findMany(categoryQuery),
       db.numberCategory.findMany(categoryQuery),
       db.stringCategory.findMany(categoryQuery),
-      db.multipleStringCategory.findMany(categoryQuery),
+      (
+        await db.multipleStringCategory.findMany(categoryQuery)
+      ).map((c) => ({
+        ...c,
+        values: c.values.map((v) => ({ ...v, colorHex: null })),
+      })),
     ])
   )
     .map((cs) =>
@@ -319,6 +333,18 @@ export async function egressCategories(
         ...c,
         values: undefined,
         valueRange: c.values.map((v) => v.value),
+        colors: c.values.some((v) => v.colorHex !== null)
+          ? convertMapToObject(
+              new Map<string, string>(
+                c.values
+                  .filter((v) => v.colorHex !== null)
+                  .map((v) => [
+                    v.value.toString(),
+                    v.colorHex === null ? "" : v.colorHex,
+                  ])
+              )
+            )
+          : undefined,
       }))
     )
     .flat();

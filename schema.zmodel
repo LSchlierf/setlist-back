@@ -15,7 +15,6 @@ model band {
     passhash   String
     // repertoire (implicit)
     categories category[]
-    // colors     color[]
     songs      song[]
     setlists   setlist[]
 }
@@ -35,17 +34,7 @@ model song {
     band                     band                     @relation(fields: [bandId], references: [id])
     bandId                   String
     setSpots                 setSpot[]
-    // color                  color?                   @relation(fields: [colorId], references: [id])
-    // colorId                String
 }
-
-// model color {
-//     id       String @id @default(uuid())
-//     hexValue String
-//     band     band   @relation(fields: [bandId], references: [id])
-//     bandId   String
-//     songs    song[]
-// }
 
 // Setlists
 
@@ -91,7 +80,6 @@ model category {
 
 model booleanCategory extends category {
     values booleanCategoryValue[]
-    // properties booleanProperty[]
 }
 
 model booleanCategoryValue {
@@ -99,6 +87,7 @@ model booleanCategoryValue {
     category   booleanCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
     categoryId String
     value      Boolean
+    colorHex   String?
     properties booleanProperty[]
     @@unique([categoryId, value])
 }
@@ -106,17 +95,13 @@ model booleanCategoryValue {
 model booleanProperty {
     value   booleanCategoryValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
     valueId String
-    // category   booleanCategory      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-    // categoryId String
     song    song                 @relation(fields: [songId], references: [id], onDelete: Cascade)
     songId  String
     @@unique([valueId, songId])
-    // @@unique([categoryId, songId])
 }
 
 model numberCategory extends category {
     values numberCategoryValue[]
-    // properties numberProperty[]
 }
 
 model numberCategoryValue {
@@ -124,6 +109,7 @@ model numberCategoryValue {
     category   numberCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
     categoryId String
     value      Int
+    colorHex   String?
     properties numberProperty[]
     @@unique([categoryId, value])
 }
@@ -131,17 +117,13 @@ model numberCategoryValue {
 model numberProperty {
     value   numberCategoryValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
     valueId String
-    // category   numberCategory      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-    // categoryId String
     song    song                @relation(fields: [songId], references: [id], onDelete: Cascade)
     songId  String
     @@unique([valueId, songId])
-    // @@unique([categoryId, songId])
 }
 
 model stringCategory extends category {
     values stringCategoryValue[]
-    // properties stringProperty[]
 }
 
 model stringCategoryValue {
@@ -149,6 +131,7 @@ model stringCategoryValue {
     category   stringCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
     categoryId String
     value      String
+    colorHex   String?
     properties stringProperty[]
     @@unique([categoryId, value])
 }
@@ -156,17 +139,13 @@ model stringCategoryValue {
 model stringProperty {
     value   stringCategoryValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
     valueId String
-    // category   stringCategory      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-    // categoryId String
     song    song                @relation(fields: [songId], references: [id], onDelete: Cascade)
     songId  String
     @@unique([valueId, songId])
-    // @@unique([categoryId, songId])
 }
 
 model multipleStringCategory extends category {
     values multipleStringCategoryValue[]
-    // properties multipleStringProperty[]
 }
 
 model multipleStringCategoryValue {
@@ -174,6 +153,7 @@ model multipleStringCategoryValue {
     category   multipleStringCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
     categoryId String
     value      String
+    // colorHex   String?
     properties multipleStringProperty[]
     @@unique([categoryId, value])
 }
@@ -181,10 +161,7 @@ model multipleStringCategoryValue {
 model multipleStringProperty {
     value   multipleStringCategoryValue @relation(fields: [valueId], references: [id], onDelete: Cascade)
     valueId String
-    // category   multipleStringCategory      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-    // categoryId String
     song    song                        @relation(fields: [songId], references: [id], onDelete: Cascade)
     songId  String
     @@unique([valueId, songId])
-    // @@unique([categoryId, songId])
 }
