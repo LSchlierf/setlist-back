@@ -637,7 +637,6 @@ io.on("connection", (socket) => {
 
   socket.on("repertoire:addCategory", async (newCategory: category) => {
     try {
-      console.log(newCategory);
       await ingestSingleCategory(db, bandId, newCategory);
       socket.to(bandId).emit("repertoire:addCategory", newCategory);
     } catch {
