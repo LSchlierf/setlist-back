@@ -383,13 +383,13 @@ export async function ingestSetlist(
         create: [
           ...setlist.encore.map((song: { id: string }, songIndex: number) => ({
             songId: song.id,
-            set: 0,
+            set: -1,
             spotPrio: songIndex,
           })),
           ...setlist.sets.flatMap((set: { id: string }[], setIndex: number) =>
             set.map((song: { id: string }, songIndex: number) => ({
               songId: song.id,
-              set: setIndex + 1,
+              set: setIndex,
               spotPrio: songIndex,
             }))
           ),
