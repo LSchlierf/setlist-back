@@ -374,7 +374,7 @@ export async function ingestSetlist(
           id: bandId,
         },
       },
-      startTime: setlist.startTime,
+      time: setlist.startTime,
       name: setlist.concert,
       fixedTime: setlist.timeFixed === "start" ? "START" : "END",
       breakLen: setlist.breaks?.len,

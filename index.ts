@@ -296,7 +296,7 @@ userRouter.get("/setlists", async (req: authenticatedRequest, res) => {
       breakBuffer: true,
       breakLen: true,
       fixedTime: true,
-      startTime: true,
+      time: true,
       deletedAt: true,
     },
     include: {
@@ -413,7 +413,7 @@ userRouter.post("/setlist/create", async (req: authenticatedRequest, res) => {
         breakLen: true,
         fixedTime: true,
         name: true,
-        startTime: true,
+        time: true,
       },
     })
   ).id;
@@ -840,7 +840,7 @@ io.on("connection", (socket) => {
   );
 
   socket.on("disconnect", () => {
-    console.log("band disconnect");
+    console.log("band disconnect:", bandId);
   });
 });
 
