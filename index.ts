@@ -19,6 +19,8 @@ import {
   ingestSetlist,
   ingestSingleCategory,
 } from "./utils/importExport.ts";
+import { initSocket } from "./utils/socket.ts";
+import { log } from "./utils/logging.ts";
 
 dotenv.config();
 
@@ -51,31 +53,10 @@ const io = new Server(server);
 
 type authenticatedRequest = express.Request & { bandId?: string };
 
-type song = {
-  id: string;
-  title: string;
-  artist: string;
-  length: number;
-  notes: string;
-  properties: { [key: string]: any };
-};
-
-type category = {
-  id: string;
-  title: string;
-  show: boolean;
-  type: string;
-  valueRange: any[];
-};
-
 function generateToken(bandId: string) {
   return jwt.sign({ bandId: bandId }, process.env.KEY!, {
     expiresIn: "365d",
   });
-}
-
-function validateToken(token: string) {
-  return jwt.verify(token, process.env.KEY!) as jwt.JwtPayload;
 }
 
 function authenticateToken(
@@ -359,7 +340,7 @@ userRouter.post(
       await ingestRepertoire(db, bandId, repertoire);
       res.sendStatus(200);
     } catch (e) {
-      console.log("Exception occured during ingest setlist:", e);
+      log("Exception occured during ingest setlist:", e);
       res.sendStatus(500);
     }
   }
@@ -373,7 +354,7 @@ userRouter.post("/setlist/ingest", async (req: authenticatedRequest, res) => {
     await ingestSetlist(db, bandId, setlist);
     res.sendStatus(200);
   } catch (e) {
-    console.log("Exception occured during ingest setlist:", e);
+    log("Exception occured during ingest setlist:", e);
     res.sendStatus(500);
   }
 });
@@ -396,7 +377,7 @@ userRouter.get("/repertoire/export", async (req: authenticatedRequest, res) => {
 });
 
 userRouter.post("/setlist/create", async (req: authenticatedRequest, res) => {
-  const bandId = req.bandId;
+  const bandId = req.bandId!;
 
   const id = (
     await db.setlist.create({
@@ -420,6 +401,8 @@ userRouter.post("/setlist/create", async (req: authenticatedRequest, res) => {
 
   res.status(200);
   res.json(id);
+
+  io.to(bandId).emit("createSetlist");
 });
 
 userRouter.delete("/setlist/:id", async (req: authenticatedRequest, res) => {
@@ -442,407 +425,14 @@ userRouter.delete("/setlist/:id", async (req: authenticatedRequest, res) => {
 
     res.sendStatus(200);
   } catch (e) {
-    console.log("Error during delete setllist:", e);
+    log("Error during delete setllist:", e);
     res.sendStatus(500);
   }
 });
 
 app.use("/api/user", userRouter);
 
-io.on("connection", (socket) => {
-  const token = socket.handshake.headers?.token as string;
-  if (!token) return;
-  let payload;
-  try {
-    payload = validateToken(token);
-  } catch {
-    return;
-  }
-  const bandId = payload.bandId;
-
-  console.log("band connect:", bandId);
-
-  socket.join(bandId);
-
-  socket.on("repertoire", () => {
-    socket.to(bandId).emit("repertoire");
-  });
-
-  socket.on("repertoire:addSong", async (newSong: song) => {
-    try {
-      const data = {
-        ...newSong,
-        properties: undefined,
-      };
-
-      await db.song.create({
-        data: {
-          ...data,
-          band: {
-            connect: {
-              id: bandId,
-            },
-          },
-        },
-      });
-
-      socket.to(bandId).emit("repertoire:addSong", newSong);
-    } catch {
-      socket.to(bandId).emit("repertoire");
-    }
-  });
-
-  socket.on("repertoire:updateSong", async (newSong: song) => {
-    try {
-      const data = {
-        ...newSong,
-        properties: undefined,
-      };
-
-      const categories = await db.category.findMany({
-        where: {
-          bandId: bandId,
-        },
-        omit: {
-          bandId: true,
-          title: true,
-          show: true,
-        },
-      });
-
-      await db.song.update({
-        where: {
-          id: newSong.id,
-          bandId: bandId,
-        },
-        data: {
-          ...data,
-          booleanProperties: {
-            deleteMany: {
-              songId: newSong.id,
-            },
-          },
-          numberProperties: {
-            deleteMany: {
-              songId: newSong.id,
-            },
-          },
-          stringProperties: {
-            deleteMany: {
-              songId: newSong.id,
-            },
-          },
-          multipleStringProperties: {
-            deleteMany: {
-              songId: newSong.id,
-            },
-          },
-        },
-      });
-
-      const getRelevantCategories = (
-        categoryType:
-          | "booleanCategory"
-          | "numberCategory"
-          | "stringCategory"
-          | "multipleStringCategory",
-        song: song
-      ) =>
-        categories
-          .filter((c) => c.type === categoryType)
-          .filter((c) => song.properties[c.id] !== undefined);
-
-      await db.song.update({
-        where: {
-          id: newSong.id,
-          bandId: bandId,
-        },
-        data: {
-          booleanProperties: {
-            create: getRelevantCategories("booleanCategory", newSong).map(
-              (c) => ({
-                value: {
-                  connect: {
-                    categoryId_value: {
-                      categoryId: c.id,
-                      value: newSong.properties[c.id] as boolean,
-                    },
-                  },
-                },
-              })
-            ),
-          },
-          numberProperties: {
-            create: getRelevantCategories("numberCategory", newSong).map(
-              (c) => ({
-                value: {
-                  connect: {
-                    categoryId_value: {
-                      categoryId: c.id,
-                      value: newSong.properties[c.id] as number,
-                    },
-                  },
-                },
-              })
-            ),
-          },
-          stringProperties: {
-            create: getRelevantCategories("stringCategory", newSong).map(
-              (c) => ({
-                value: {
-                  connect: {
-                    categoryId_value: {
-                      categoryId: c.id,
-                      value: newSong.properties[c.id] as string,
-                    },
-                  },
-                },
-              })
-            ),
-          },
-          multipleStringProperties: {
-            create: getRelevantCategories("multipleStringCategory", newSong)
-              .flatMap((c) =>
-                newSong.properties[c.id].map((v: string) => ({
-                  categoryId: c.id,
-                  value: v,
-                }))
-              )
-              .map((property: { categoryId: string; value: string }) => ({
-                value: {
-                  connect: {
-                    categoryId_value: property,
-                  },
-                },
-              })),
-          },
-        },
-      });
-
-      socket.to(bandId).emit("repertoire:updateSong", newSong);
-    } catch {
-      socket.to(bandId).emit("repertoire");
-    }
-  });
-
-  socket.on("repertoire:deleteSong", async (deletedSongId) => {
-    try {
-      await db.song.delete({
-        where: {
-          id: deletedSongId,
-          bandId: bandId,
-        },
-      });
-      socket.to(bandId).emit("repertoire:deleteSong", deletedSongId);
-    } catch {
-      socket.to(bandId).emit("repertoire");
-    }
-  });
-
-  socket.on("repertoire:addCategory", async (newCategory: category) => {
-    try {
-      await ingestSingleCategory(db, bandId, newCategory);
-      socket.to(bandId).emit("repertoire:addCategory", newCategory);
-    } catch {
-      socket.to(bandId).emit("repertoire");
-    }
-  });
-
-  socket.on("repertoire:updateCategory", async (newCategory: category) => {
-    try {
-      await db.category.update({
-        where: {
-          id: newCategory.id,
-          bandId: bandId,
-        },
-        data: {
-          title: newCategory.title,
-          show: newCategory.show,
-        },
-      });
-
-      socket.to(bandId).emit("repertoire:updateCategory", newCategory);
-    } catch {
-      socket.to(bandId).emit("repertoire");
-    }
-  });
-
-  socket.on("repertoire:deleteCategory", async (deletedCategoryId: string) => {
-    try {
-      await db.category.delete({
-        where: {
-          id: deletedCategoryId,
-          bandId: bandId,
-        },
-      });
-      socket.to(bandId).emit("repertoire:deleteCategory", deletedCategoryId);
-    } catch {
-      socket.to(bandId).emit("repertoire");
-    }
-  });
-
-  socket.on(
-    "repertoire:setColors",
-    async ({
-      categoryId,
-      colors,
-    }: {
-      categoryId: string;
-      colors: { [key: string]: string };
-    }) => {
-      try {
-        const category = await db.category.findFirst({
-          where: {
-            id: categoryId,
-            bandId: bandId,
-          },
-          omit: {
-            bandId: true,
-            id: true,
-            show: true,
-            title: true,
-          },
-        });
-
-        switch (category?.type) {
-          case "booleanCategory":
-            await db.booleanCategory.update({
-              where: {
-                id: categoryId,
-              },
-              data: {
-                values: {
-                  update: Object.keys(colors).map((v) => ({
-                    where: {
-                      categoryId_value: {
-                        categoryId: categoryId,
-                        value: v === "true",
-                      },
-                    },
-                    data: {
-                      colorHex: colors[v],
-                    },
-                  })),
-                },
-              },
-            });
-            break;
-          case "numberCategory":
-            await db.numberCategory.update({
-              where: {
-                id: categoryId,
-              },
-              data: {
-                values: {
-                  update: Object.keys(colors).map((v) => ({
-                    where: {
-                      categoryId_value: {
-                        categoryId: categoryId,
-                        value: parseInt(v),
-                      },
-                    },
-                    data: {
-                      colorHex: colors[v],
-                    },
-                  })),
-                },
-              },
-            });
-            break;
-          case "stringCategory":
-            await db.stringCategory.update({
-              where: {
-                id: categoryId,
-              },
-              data: {
-                values: {
-                  update: Object.keys(colors).map((v) => ({
-                    where: {
-                      categoryId_value: {
-                        categoryId: categoryId,
-                        value: v,
-                      },
-                    },
-                    data: {
-                      colorHex: colors[v],
-                    },
-                  })),
-                },
-              },
-            });
-            break;
-        }
-
-        socket.to(bandId).emit("repertoire:setColors", { categoryId, colors });
-      } catch {
-        socket.to(bandId).emit("repertoire");
-      }
-    }
-  );
-
-  socket.on("repertoire:deleteColors", async (categoryId: string) => {
-    try {
-      const category = await db.category.findFirst({
-        where: {
-          id: categoryId,
-          bandId: bandId,
-        },
-        omit: {
-          bandId: true,
-          id: true,
-          show: true,
-          title: true,
-        },
-      });
-
-      const query = {
-        where: {
-          categoryId: categoryId,
-        },
-        data: {
-          colorHex: null,
-        },
-      };
-
-      switch (category?.type) {
-        case "booleanCategory":
-          await db.booleanCategoryValue.updateMany(query);
-          break;
-        case "numberCategory":
-          await db.numberCategoryValue.updateMany(query);
-          break;
-        case "stringCategory":
-          await db.stringCategoryValue.updateMany(query);
-          break;
-      }
-
-      socket.to(bandId).emit("repertoire:deleteColors", categoryId);
-    } catch {
-      socket.to(bandId).emit("repertoire");
-    }
-  });
-
-  socket.on(
-    "setlist:updateName",
-    async (setlistId: string, newName: string) => {
-      await db.setlist.update({
-        where: {
-          id: setlistId,
-          bandId: bandId,
-        },
-        data: {
-          name: newName,
-        },
-      });
-
-      socket.to(bandId).emit("setlist:updateName", setlistId, newName);
-    }
-  );
-
-  socket.on("disconnect", () => {
-    console.log("band disconnect:", bandId);
-  });
-});
+initSocket(io, db);
 
 app.use(express.static("/acme", { dotfiles: "allow" }));
 
@@ -851,9 +441,9 @@ app.use("/", proxy("localhost:3000/"));
 const PORT = process.env.DEV ? 8080 : 443;
 
 server.listen(PORT, () => {
-  console.log(`server listening on port ${PORT}`);
-  if (process.env.DEV) console.log(`http://localhost:${PORT}`);
+  log(`server listening on port ${PORT}`);
+  if (process.env.DEV) log(`http://localhost:${PORT}`);
   db.band.count().then((c) => {
-    console.log(`${c} users loaded in db`);
+    log(`${c} users loaded in db`);
   });
 });
