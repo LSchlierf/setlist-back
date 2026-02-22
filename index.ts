@@ -338,6 +338,7 @@ userRouter.post(
 
     try {
       await ingestRepertoire(db, bandId, repertoire);
+      io.to(bandId).emit("frontPage");
       res.sendStatus(200);
     } catch (e) {
       log("Exception occured during ingest setlist:", e);
