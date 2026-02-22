@@ -285,7 +285,7 @@ userRouter.get("/setlists", async (req: authenticatedRequest, res) => {
         distinct: "set",
         where: {
           set: {
-            not: 0,
+            gte: 0,
           },
         },
       },
@@ -352,6 +352,7 @@ userRouter.post("/setlist/ingest", async (req: authenticatedRequest, res) => {
 
   try {
     await ingestSetlist(db, bandId, setlist);
+    io.to(bandId).emit("frontPage");
     res.sendStatus(200);
   } catch (e) {
     log("Exception occured during ingest setlist:", e);
@@ -402,11 +403,11 @@ userRouter.post("/setlist/create", async (req: authenticatedRequest, res) => {
   res.status(200);
   res.json(id);
 
-  io.to(bandId).emit("createSetlist");
+  io.to(bandId).emit("frontPage");
 });
 
 userRouter.delete("/setlist/:id", async (req: authenticatedRequest, res) => {
-  const bandId = req.bandId;
+  const bandId = req.bandId!;
   const setlistId = req.params.id as string;
 
   try {
@@ -423,6 +424,7 @@ userRouter.delete("/setlist/:id", async (req: authenticatedRequest, res) => {
       },
     });
 
+    io.to(bandId).emit("frontPage");
     res.sendStatus(200);
   } catch (e) {
     log("Error during delete setllist:", e);

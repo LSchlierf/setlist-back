@@ -74,6 +74,7 @@ export function initSocket(
         });
 
         repertoireSocket.to(bandId).emit("repertoire:addSong", newSong);
+        io.to(bandId).emit("frontPage");
       } catch {
         repertoireSocket.to(bandId).emit("repertoire");
       }
@@ -223,6 +224,7 @@ export function initSocket(
         repertoireSocket
           .to(bandId)
           .emit("repertoire:deleteSong", deletedSongId);
+        io.to(bandId).emit("frontPage");
       } catch {
         repertoireSocket.to(bandId).emit("repertoire");
       }
@@ -454,6 +456,7 @@ export function initSocket(
       });
 
       setlistSocket.to(roomId).emit("setlist:updateName", newName);
+      io.to(bandId).emit("frontPage");
     });
 
     socket.on("setlist:createSpot", async (newSpot: setSpot) => {
@@ -465,6 +468,7 @@ export function initSocket(
       });
 
       setlistSocket.to(roomId).emit("setlist:createSpot", newSpot);
+      io.to(bandId).emit("frontPage");
     });
 
     socket.on("setlist:updateSpot", async (newSpot: setSpot) => {
@@ -478,6 +482,7 @@ export function initSocket(
         data: newSpot,
       });
       setlistSocket.to(roomId).emit("setlist:updateSpot", newSpot);
+      io.to(bandId).emit("frontPage");
     });
 
     socket.on("setlist:removeSpot", async (songId: string) => {
@@ -490,6 +495,42 @@ export function initSocket(
         },
       });
       setlistSocket.to(roomId).emit("setlist:removeSpot", songId);
+    });
+
+    socket.on("setlist:deleteSet", async (setIndex: number) => {
+      await db.setSpot.deleteMany({
+        where: {
+          setlistId: setlistId,
+          set: setIndex,
+        },
+      });
+      await db.setSpot.updateMany({
+        where: {
+          setlistId: setlistId,
+          set: {
+            gt: setIndex,
+          },
+        },
+        data: {
+          set: {
+            decrement: 1,
+          },
+        },
+      });
+      setlistSocket.to(roomId).emit("setlist:deleteSet", setIndex);
+      io.to(bandId).emit("frontPage");
+    });
+
+    socket.on("setlist:deleteEncore", async () => {
+      await db.setSpot.deleteMany({
+        where: {
+          setlistId: setlistId,
+          set: {
+            lt: 0,
+          },
+        },
+      });
+      setlistSocket.to(roomId).emit("setlist:deleteEncore");
     });
 
     socket.on("disconnect", () => {
