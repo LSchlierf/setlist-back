@@ -1,7 +1,7 @@
 import { Server } from "socket.io";
 import { createZenStackClient } from "../zenstack/utils.ts";
 import jwt from "jsonwebtoken";
-import { type category, type song } from "./types.ts";
+import { type setSpot, type category, type song } from "./types.ts";
 import { ingestSingleCategory } from "./importExport.ts";
 import { log } from "./logging.ts";
 
@@ -442,22 +442,55 @@ export function initSocket(
 
     socket.join(roomId);
 
-    socket.on(
-      "setlist:updateName",
-      async (setlistId: string, newName: string) => {
-        await db.setlist.update({
-          where: {
-            id: setlistId,
-            bandId: bandId,
-          },
-          data: {
-            name: newName,
-          },
-        });
+    socket.on("setlist:updateName", async (newName: string) => {
+      await db.setlist.update({
+        where: {
+          id: setlistId,
+          bandId: bandId,
+        },
+        data: {
+          name: newName,
+        },
+      });
 
-        setlistSocket.to(roomId).emit("setlist:updateName", setlistId, newName);
-      }
-    );
+      setlistSocket.to(roomId).emit("setlist:updateName", newName);
+    });
+
+    socket.on("setlist:createSpot", async (newSpot: setSpot) => {
+      await db.setSpot.create({
+        data: {
+          setlistId: setlistId,
+          ...newSpot,
+        },
+      });
+
+      setlistSocket.to(roomId).emit("setlist:createSpot", newSpot);
+    });
+
+    socket.on("setlist:updateSpot", async (newSpot: setSpot) => {
+      await db.setSpot.update({
+        where: {
+          songId_setlistId: {
+            setlistId: setlistId,
+            songId: newSpot.songId,
+          },
+        },
+        data: newSpot,
+      });
+      setlistSocket.to(roomId).emit("setlist:updateSpot", newSpot);
+    });
+
+    socket.on("setlist:removeSpot", async (songId: string) => {
+      await db.setSpot.delete({
+        where: {
+          songId_setlistId: {
+            setlistId: setlistId,
+            songId: songId,
+          },
+        },
+      });
+      setlistSocket.to(roomId).emit("setlist:removeSpot", songId);
+    });
 
     socket.on("disconnect", () => {
       log("band disconnect (setlist):", roomId);

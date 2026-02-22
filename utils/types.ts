@@ -14,3 +14,9 @@ export type category = {
   type: string;
   valueRange: any[];
 };
+
+export type setSpot = {
+  set: number;
+  spotPrio: number;
+  songId: string;
+};
