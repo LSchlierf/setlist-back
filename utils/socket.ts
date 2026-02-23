@@ -1,7 +1,12 @@
 import { Server } from "socket.io";
 import { createZenStackClient } from "../zenstack/utils.ts";
 import jwt from "jsonwebtoken";
-import { type setSpot, type category, type song } from "./types.ts";
+import {
+  type setSpot,
+  type category,
+  type song,
+  type setlistTimeDTO,
+} from "./types.ts";
 import { ingestSingleCategory } from "./importExport.ts";
 import { log } from "./logging.ts";
 
@@ -531,6 +536,19 @@ export function initSocket(
         },
       });
       setlistSocket.to(roomId).emit("setlist:deleteEncore");
+    });
+
+    socket.on("setlist:timeUpdate", async (newTimes: setlistTimeDTO) => {
+      await db.setlist.update({
+        where: {
+          id: setlistId,
+          bandId: bandId,
+        },
+        data: {
+          ...newTimes,
+        },
+      });
+      setlistSocket.to(roomId).emit("setlist:timeUpdate", newTimes);
     });
 
     socket.on("disconnect", () => {

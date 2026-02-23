@@ -20,3 +20,10 @@ export type setSpot = {
   spotPrio: number;
   songId: string;
 };
+
+export type setlistTimeDTO = {
+  fixedTime: "START" | "END"
+  time: string,
+  breakLen: number,
+  breakBuffer: number
+};

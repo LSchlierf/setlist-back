@@ -367,34 +367,55 @@ export async function ingestSetlist(
   bandId: string,
   setlist: any
 ) {
-  await db.setlist.create({
-    data: {
-      band: {
-        connect: {
-          id: bandId,
+  if (setlist.setSpots !== undefined) {
+    // v2
+    await db.setlist.create({
+      data: {
+        ...setlist,
+        id: undefined,
+        band: {
+          connect: {
+            id: bandId,
+          },
+        },
+        setSpots: {
+          create: setlist.setSpots,
         },
       },
-      time: setlist.startTime,
-      name: setlist.concert,
-      fixedTime: setlist.timeFixed === "start" ? "START" : "END",
-      breakLen: setlist.breaks?.len,
-      breakBuffer: setlist.breaks?.buffer,
-      setSpots: {
-        create: [
-          ...setlist.encore.map((song: { id: string }, songIndex: number) => ({
-            songId: song.id,
-            set: -1,
-            spotPrio: songIndex,
-          })),
-          ...setlist.sets.flatMap((set: { id: string }[], setIndex: number) =>
-            set.map((song: { id: string }, songIndex: number) => ({
-              songId: song.id,
-              set: setIndex,
-              spotPrio: songIndex,
-            }))
-          ),
-        ],
+    });
+  } else {
+    // v1
+    await db.setlist.create({
+      data: {
+        band: {
+          connect: {
+            id: bandId,
+          },
+        },
+        time: setlist.startTime,
+        name: setlist.concert,
+        fixedTime: setlist.timeFixed === "start" ? "START" : "END",
+        breakLen: setlist.breaks?.len,
+        breakBuffer: setlist.breaks?.buffer,
+        setSpots: {
+          create: [
+            ...setlist.encore.map(
+              (song: { id: string }, songIndex: number) => ({
+                songId: song.id,
+                set: -1,
+                spotPrio: songIndex,
+              })
+            ),
+            ...setlist.sets.flatMap((set: { id: string }[], setIndex: number) =>
+              set.map((song: { id: string }, songIndex: number) => ({
+                songId: song.id,
+                set: setIndex,
+                spotPrio: songIndex,
+              }))
+            ),
+          ],
+        },
       },
-    },
-  });
+    });
+  }
 }
