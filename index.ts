@@ -17,7 +17,6 @@ import {
   egressSongs,
   ingestRepertoire,
   ingestSetlist,
-  ingestSingleCategory,
 } from "./utils/importExport.ts";
 import { initSocket } from "./utils/socket.ts";
 import { log } from "./utils/logging.ts";
@@ -25,9 +24,11 @@ import { log } from "./utils/logging.ts";
 dotenv.config();
 
 let server: http.Server | https.Server;
+let acmeServer: http.Server;
 
 const db = createZenStackClient();
 const app = express();
+let acmePassThrough = express();
 
 if (!process.env.DEV) {
   const privateKey = fs.readFileSync(
@@ -45,6 +46,7 @@ if (!process.env.DEV) {
   };
 
   server = https.createServer(credentials, app);
+  acmeServer = http.createServer(acmePassThrough);
 } else {
   server = http.createServer(app);
 }
@@ -85,6 +87,10 @@ app.use(bodyparser.json());
 app.get("/ping", (req, res) => {
   res.send("pong");
 });
+
+/***
+ * USER MANAGEMENT
+ */
 
 app.post("/api/signup", async (req, res) => {
   const password = req.body?.password;
@@ -225,6 +231,10 @@ userRouter.post("/changePassword", async (req: authenticatedRequest, res) => {
   res.sendStatus(200);
 });
 
+/***
+ * REPERTOIRE MANAGEMENT
+ */
+
 userRouter.get("/repertoire", async (req: authenticatedRequest, res) => {
   const bandId = req.bandId!;
 
@@ -242,13 +252,6 @@ userRouter.get(
   }
 );
 
-userRouter.get("/repertoire/songs", async (req: authenticatedRequest, res) => {
-  const bandId = req.bandId!;
-
-  res.status(200);
-  res.json(await egressSongs(db, bandId));
-});
-
 userRouter.get("/repertoire/size", async (req: authenticatedRequest, res) => {
   const bandId = req.bandId;
 
@@ -261,6 +264,40 @@ userRouter.get("/repertoire/size", async (req: authenticatedRequest, res) => {
     })
   );
 });
+
+userRouter.get("/repertoire/songs", async (req: authenticatedRequest, res) => {
+  const bandId = req.bandId!;
+
+  res.status(200);
+  res.json(await egressSongs(db, bandId));
+});
+
+userRouter.post(
+  "/repertoire/ingest",
+  async (req: authenticatedRequest, res) => {
+    const repertoire = req.body;
+    const bandId = req.bandId!;
+
+    try {
+      await ingestRepertoire(db, bandId, repertoire);
+      res.sendStatus(200);
+    } catch (e) {
+      log("Exception occured during ingest setlist:", e);
+      res.sendStatus(500);
+    }
+  }
+);
+
+userRouter.get("/repertoire/export", async (req: authenticatedRequest, res) => {
+  const bandId = req.bandId!;
+
+  res.status(200);
+  res.json(await egressRepertoire(db, bandId));
+});
+
+/***
+ * SETLIST MANAGEMENT
+ */
 
 userRouter.get("/setlists", async (req: authenticatedRequest, res) => {
   const setlists = await db.setlist.findMany({
@@ -279,6 +316,9 @@ userRouter.get("/setlists", async (req: authenticatedRequest, res) => {
       fixedTime: true,
       time: true,
       deletedAt: true,
+    },
+    orderBy: {
+      createdAt: "desc",
     },
     include: {
       setSpots: {
@@ -330,30 +370,12 @@ userRouter.get("/setlist/:id", async (req: authenticatedRequest, res) => {
   res.json(setlist);
 });
 
-userRouter.post(
-  "/repertoire/ingest",
-  async (req: authenticatedRequest, res) => {
-    const repertoire = req.body;
-    const bandId = req.bandId!;
-
-    try {
-      await ingestRepertoire(db, bandId, repertoire);
-      io.to(bandId).emit("frontPage");
-      res.sendStatus(200);
-    } catch (e) {
-      log("Exception occured during ingest setlist:", e);
-      res.sendStatus(500);
-    }
-  }
-);
-
 userRouter.post("/setlist/ingest", async (req: authenticatedRequest, res) => {
   const setlist = req.body;
   const bandId = req.bandId!;
 
   try {
     await ingestSetlist(db, bandId, setlist);
-    io.to(bandId).emit("frontPage");
     res.sendStatus(200);
   } catch (e) {
     log("Exception occured during ingest setlist:", e);
@@ -367,16 +389,9 @@ userRouter.get(
     const bandId = req.bandId;
     const setlistId = req.params.id as string;
 
-    res.sendStatus(501); // TODO
+    res.sendStatus(501); // TODO maybe, currently JSON dump of /setlist/:id
   }
 );
-
-userRouter.get("/repertoire/export", async (req: authenticatedRequest, res) => {
-  const bandId = req.bandId!;
-
-  res.status(200);
-  res.json(await egressRepertoire(db, bandId));
-});
 
 userRouter.post("/setlist/create", async (req: authenticatedRequest, res) => {
   const bandId = req.bandId!;
@@ -389,6 +404,7 @@ userRouter.post("/setlist/create", async (req: authenticatedRequest, res) => {
             id: bandId,
           },
         },
+        createdAt: new Date(),
       },
       omit: {
         bandId: true,
@@ -403,8 +419,6 @@ userRouter.post("/setlist/create", async (req: authenticatedRequest, res) => {
 
   res.status(200);
   res.json(id);
-
-  io.to(bandId).emit("frontPage");
 });
 
 userRouter.delete("/setlist/:id", async (req: authenticatedRequest, res) => {
@@ -425,7 +439,6 @@ userRouter.delete("/setlist/:id", async (req: authenticatedRequest, res) => {
       },
     });
 
-    io.to(bandId).emit("frontPage");
     res.sendStatus(200);
   } catch (e) {
     log("Error during delete setllist:", e);
@@ -435,9 +448,13 @@ userRouter.delete("/setlist/:id", async (req: authenticatedRequest, res) => {
 
 app.use("/api/user", userRouter);
 
+/***
+ * WebSocket fucnctionality
+ */
+
 initSocket(io, db);
 
-app.use(express.static("/acme", { dotfiles: "allow" }));
+acmePassThrough.use(express.static("/acme", { dotfiles: "allow" }));
 
 app.use("/", proxy("localhost:3000/"));
 
@@ -445,7 +462,11 @@ const PORT = process.env.DEV ? 8080 : 443;
 
 server.listen(PORT, () => {
   log(`server listening on port ${PORT}`);
-  if (process.env.DEV) log(`http://localhost:${PORT}`);
+  if (process.env.DEV) {
+    log(`http://localhost:${PORT}`);
+  } else {
+    acmeServer.listen(80);
+  }
   db.band.count().then((c) => {
     log(`${c} users loaded in db`);
   });

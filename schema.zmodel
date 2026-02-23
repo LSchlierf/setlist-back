@@ -47,7 +47,8 @@ model setlist {
     breakLen    Int       @default(20)
     breakBuffer Int       @default(5)
     fixedTime   fixedTime @default(START)
-    time        String    @default("19:00") // @TODO: this should be the specified fixed time
+    time        String    @default("19:00") // End or start, depending on fixedTime
+    createdAt   DateTime?
     deletedAt   DateTime?
 }
 

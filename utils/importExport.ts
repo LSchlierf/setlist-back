@@ -378,6 +378,7 @@ export async function ingestSetlist(
             id: bandId,
           },
         },
+        createdAt: new Date(),
         setSpots: {
           create: setlist.setSpots,
         },
@@ -392,6 +393,7 @@ export async function ingestSetlist(
             id: bandId,
           },
         },
+        createdAt: new Date(),
         time: setlist.startTime,
         name: setlist.concert,
         fixedTime: setlist.timeFixed === "start" ? "START" : "END",
