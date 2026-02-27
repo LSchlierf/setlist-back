@@ -18,10 +18,11 @@ export function initSocket(
   io: Server,
   db: ReturnType<typeof createZenStackClient>
 ) {
+  const mainSocket = io.of("/main");
   const repertoireSocket = io.of("/repertoire");
   const setlistSocket = io.of("/setlist");
 
-  io.on("connection", (socket) => {
+  mainSocket.on("connection", (socket) => {
     const token = socket.handshake.headers?.token as string;
     if (!token) return;
     let payload;
@@ -35,10 +36,6 @@ export function initSocket(
     log("band connect:", bandId);
 
     socket.join(bandId);
-
-    socket.on("frontPage", () => {
-      socket.to(bandId).emit("frontPage");
-    });
 
     socket.on("disconnect", () => {
       log("band disconnect:", bandId);
@@ -83,6 +80,7 @@ export function initSocket(
         });
 
         socket.to(bandId).emit("repertoire:addSong", newSong);
+        mainSocket.to(bandId).emit("refresh");
       } catch {
         repertoireSocket.to(bandId).emit("repertoire");
       }
@@ -230,6 +228,7 @@ export function initSocket(
           },
         });
         socket.to(bandId).emit("repertoire:deleteSong", deletedSongId);
+        mainSocket.to(bandId).emit("refresh");
       } catch {
         repertoireSocket.to(bandId).emit("repertoire");
       }
@@ -460,7 +459,7 @@ export function initSocket(
         });
 
         socket.to(roomId).emit("setlist:updateName", newName);
-        io.to(bandId).emit("frontPage");
+        mainSocket.to(bandId).emit("refresh");
       } catch {
         setlistSocket.to(roomId).emit("setlist");
       }
@@ -476,6 +475,7 @@ export function initSocket(
         });
 
         socket.to(roomId).emit("setlist:createSpot", newSpot);
+        mainSocket.to(bandId).emit("refresh");
       } catch {
         setlistSocket.to(roomId).emit("setlist");
       }
@@ -497,6 +497,7 @@ export function initSocket(
           update: newSpot,
         });
         socket.to(roomId).emit("setlist:updateSpot", newSpot);
+        mainSocket.to(bandId).emit("refresh");
       } catch {
         setlistSocket.to(roomId).emit("setlist");
       }
@@ -513,6 +514,7 @@ export function initSocket(
           },
         });
         socket.to(roomId).emit("setlist:removeSpot", songId);
+        mainSocket.to(bandId).emit("refresh");
       } catch {
         setlistSocket.to(roomId).emit("setlist");
       }
@@ -540,6 +542,7 @@ export function initSocket(
           },
         });
         socket.to(roomId).emit("setlist:deleteSet", setIndex);
+        mainSocket.to(bandId).emit("refresh");
       } catch {
         setlistSocket.to(roomId).emit("setlist");
       }

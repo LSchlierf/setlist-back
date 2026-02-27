@@ -280,6 +280,7 @@ userRouter.post(
 
     try {
       await ingestRepertoire(db, bandId, repertoire);
+      io.of("/main").to(bandId).emit("refresh");
       res.sendStatus(200);
     } catch (e) {
       log("Exception occured during ingest setlist:", e);
@@ -376,6 +377,7 @@ userRouter.post("/setlist/ingest", async (req: authenticatedRequest, res) => {
 
   try {
     await ingestSetlist(db, bandId, setlist);
+    io.of("/main").to(bandId).emit("refresh");
     res.sendStatus(200);
   } catch (e) {
     log("Exception occured during ingest setlist:", e);
@@ -417,6 +419,7 @@ userRouter.post("/setlist/create", async (req: authenticatedRequest, res) => {
     })
   ).id;
 
+  io.of("/main").to(bandId).emit("refresh");
   res.status(200);
   res.json(id);
 });
@@ -439,6 +442,7 @@ userRouter.delete("/setlist/:id", async (req: authenticatedRequest, res) => {
       },
     });
 
+    io.of("/main").to(bandId).emit("refresh");
     res.sendStatus(200);
   } catch (e) {
     log("Error during delete setllist:", e);
