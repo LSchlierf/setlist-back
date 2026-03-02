@@ -31,7 +31,7 @@ model song {
     numberProperties         numberProperty[]
     stringProperties         stringProperty[]
     multipleStringProperties multipleStringProperty[]
-    band                     band                     @relation(fields: [bandId], references: [id])
+    band                     band                     @relation(fields: [bandId], references: [id], onDelete: Cascade)
     bandId                   String
     setSpots                 setSpot[]
 }
@@ -40,7 +40,7 @@ model song {
 
 model setlist {
     id          String    @id @default(uuid())
-    band        band      @relation(fields: [bandId], references: [id])
+    band        band      @relation(fields: [bandId], references: [id], onDelete: Cascade)
     bandId      String
     setSpots    setSpot[]
     name        String    @default("new setlist")
@@ -70,7 +70,7 @@ model setSpot {
 // Categories
 
 model category {
-    band   band    @relation(fields: [bandId], references: [id])
+    band   band    @relation(fields: [bandId], references: [id], onDelete: Cascade)
     bandId String
     id     String  @id @default(uuid())
     title  String
