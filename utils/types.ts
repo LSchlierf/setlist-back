@@ -1,3 +1,5 @@
+import { createZenStackClient } from "../zenstack/utils.ts";
+
 export type song = {
   id: string;
   title: string;
@@ -22,8 +24,10 @@ export type setSpot = {
 };
 
 export type setlistTimeDTO = {
-  fixedTime: "START" | "END"
-  time: string,
-  breakLen: number,
-  breakBuffer: number
+  fixedTime: "START" | "END";
+  time: string;
+  breakLen: number;
+  breakBuffer: number;
 };
+
+export type db = ReturnType<typeof createZenStackClient>;

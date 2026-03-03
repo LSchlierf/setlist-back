@@ -9,6 +9,7 @@ import {
 } from "./types.ts";
 import { ingestSingleCategory } from "./importExport.ts";
 import { log } from "./logging.ts";
+import { bandCleanup } from "./cleanup.ts";
 
 function validateToken(token: string) {
   return jwt.verify(token, process.env.KEY!) as jwt.JwtPayload;
@@ -39,6 +40,10 @@ export function initSocket(
 
     socket.on("disconnect", () => {
       log("band disconnect:", bandId);
+      if ((mainSocket.adapter.rooms.get(bandId)?.size || 0) < 1) {
+        log(bandId, "disconnected completely, running cleanup");
+        bandCleanup(bandId, db);
+      }
     });
   });
 
