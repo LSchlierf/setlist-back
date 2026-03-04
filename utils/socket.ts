@@ -73,14 +73,22 @@ export function initSocket(
           properties: undefined,
         };
 
-        await db.song.create({
-          data: {
+        await db.song.upsert({
+          where: {
+            id: newSong.id,
+          },
+          create: {
             ...data,
             band: {
               connect: {
                 id: bandId,
               },
             },
+          },
+          update: {
+            ...data,
+            id: undefined,
+            softDeleted: false,
           },
         });
 
@@ -101,6 +109,7 @@ export function initSocket(
         const categories = await db.category.findMany({
           where: {
             bandId: bandId,
+            softDeleted: false,
           },
           omit: {
             bandId: true,
@@ -113,6 +122,7 @@ export function initSocket(
           where: {
             id: newSong.id,
             bandId: bandId,
+            softDeleted: false,
           },
           data: {
             ...data,
@@ -155,6 +165,7 @@ export function initSocket(
           where: {
             id: newSong.id,
             bandId: bandId,
+            softDeleted: false,
           },
           data: {
             booleanProperties: {
@@ -226,10 +237,13 @@ export function initSocket(
 
     socket.on("repertoire:deleteSong", async (deletedSongId) => {
       try {
-        await db.song.delete({
+        await db.song.update({
           where: {
             id: deletedSongId,
             bandId: bandId,
+          },
+          data: {
+            softDeleted: true,
           },
         });
         socket.to(bandId).emit("repertoire:deleteSong", deletedSongId);
@@ -254,6 +268,7 @@ export function initSocket(
           where: {
             id: newCategory.id,
             bandId: bandId,
+            softDeleted: false,
           },
           data: {
             title: newCategory.title,
@@ -271,10 +286,13 @@ export function initSocket(
       "repertoire:deleteCategory",
       async (deletedCategoryId: string) => {
         try {
-          await db.category.delete({
+          await db.category.update({
             where: {
               id: deletedCategoryId,
               bandId: bandId,
+            },
+            data: {
+              softDeleted: true,
             },
           });
           socket
@@ -300,6 +318,7 @@ export function initSocket(
             where: {
               id: categoryId,
               bandId: bandId,
+              softDeleted: false,
             },
             omit: {
               bandId: true,
@@ -393,12 +412,14 @@ export function initSocket(
           where: {
             id: categoryId,
             bandId: bandId,
+            softDeleted: false,
           },
           omit: {
             bandId: true,
             id: true,
             show: true,
             title: true,
+            softDeleted: true,
           },
         });
 

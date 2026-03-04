@@ -2,6 +2,8 @@ import { log } from "./logging.ts";
 import { type db } from "./types.ts";
 
 export async function bandCleanup(bandId: string, db: db) {
+  await deletedSongCleanup(bandId, db);
+  await deletedCategoryCleanup(bandId, db);
   await spotPrioCleanup(bandId, db);
 }
 
@@ -26,4 +28,24 @@ async function spotPrioCleanup(bandId: string, db: db) {
   );
   `;
   log("cleaned up", rows, "setSpots");
+}
+
+async function deletedSongCleanup(bandId: string, db: db) {
+  const rows = await db.song.deleteMany({
+    where: {
+      bandId: bandId,
+      softDeleted: true,
+    },
+  });
+  log("permanently deleted", rows.count, "soft deleted songs");
+}
+
+async function deletedCategoryCleanup(bandId: string, db: db) {
+  const rows = await db.category.deleteMany({
+    where: {
+      bandId: bandId,
+      softDeleted: true,
+    },
+  });
+  log("permanently deleted", rows.count, "soft deleted categories");
 }

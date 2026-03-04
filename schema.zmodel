@@ -34,6 +34,7 @@ model song {
     band                     band                     @relation(fields: [bandId], references: [id], onDelete: Cascade)
     bandId                   String
     setSpots                 setSpot[]
+    softDeleted              Boolean                  @default(false)
 }
 
 // Setlists
@@ -70,12 +71,13 @@ model setSpot {
 // Categories
 
 model category {
-    band   band    @relation(fields: [bandId], references: [id], onDelete: Cascade)
-    bandId String
-    id     String  @id @default(uuid())
-    title  String
-    show   Boolean
-    type   String
+    band        band    @relation(fields: [bandId], references: [id], onDelete: Cascade)
+    bandId      String
+    id          String  @id @default(uuid())
+    title       String
+    show        Boolean
+    type        String
+    softDeleted Boolean @default(false)
     @@delegate(type)
 }
 
