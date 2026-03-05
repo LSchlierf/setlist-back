@@ -574,6 +574,37 @@ export function initSocket(
       }
     });
 
+    socket.on(
+      "setlist:populateSet",
+      async (setIndex: number, set: setSpot[]) => {
+        try {
+          await db.setSpot.updateMany({
+            where: {
+              setlistId: setlistId,
+              set: {
+                gte: setIndex,
+              },
+            },
+            data: {
+              set: {
+                increment: 1,
+              },
+            },
+          });
+          await db.setSpot.createMany({
+            data: set.map((s) => ({
+              ...s,
+              setlistId: setlistId,
+            })),
+          });
+          socket.to(roomId).emit("setlist:populateSet", setIndex, set);
+          mainSocket.to(bandId).emit("refresh");
+        } catch {
+          setlistSocket.to(roomId).emit("setlist");
+        }
+      }
+    );
+
     socket.on("setlist:deleteEncore", async () => {
       try {
         await db.setSpot.deleteMany({
@@ -585,6 +616,29 @@ export function initSocket(
           },
         });
         socket.to(roomId).emit("setlist:deleteEncore");
+      } catch {
+        setlistSocket.to(roomId).emit("setlist");
+      }
+    });
+
+    socket.on("setlist:populateEncore", async (encore: setSpot[]) => {
+      try {
+        await db.setSpot.deleteMany({
+          where: {
+            setlistId: setlistId,
+            set: {
+              lt: 0,
+            },
+          },
+        });
+        await db.setSpot.createMany({
+          data: encore.map((s) => ({
+            ...s,
+            setlistId: setlistId,
+          })),
+        });
+        socket.to(roomId).emit("setlist:populateEncore", encore);
+        mainSocket.to(bandId).emit("refresh");
       } catch {
         setlistSocket.to(roomId).emit("setlist");
       }
