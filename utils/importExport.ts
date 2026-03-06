@@ -1,4 +1,5 @@
 import { createZenStackClient } from "../zenstack/utils.ts";
+import { log } from "./logging.ts";
 
 export type genericCategory = {
   id: string;
@@ -56,93 +57,133 @@ async function ingestCategories(
     switch (category.type) {
       case "bool":
       case "booleanCategory":
-        await db.booleanCategory.create({
-          data: {
-            ...basicData,
-            values: {
-              create: category.valueRange.map((v: boolean) => ({
-                value: v,
-                colorHex: category.colors?.[v.toString()],
-                properties: {
-                  create:
-                    categoryToProperties
-                      .get(category.id)
-                      ?.filter((p) => p.value === v)
-                      .map((property) => ({
-                        songId: property.songId,
-                      })) || [],
-                },
-              })),
+        const valuesBool = {
+          create: category.valueRange.map((v: boolean) => ({
+            value: v,
+            colorHex: category.colors?.[v.toString()],
+            properties: {
+              create:
+                categoryToProperties
+                  .get(category.id)
+                  ?.filter((p) => p.value === v)
+                  .map((property) => ({
+                    songId: property.songId,
+                  })) || [],
             },
+          })),
+        };
+        await db.booleanCategory.upsert({
+          where: {
+            id: category.id,
+            bandId: bandId,
+          },
+          create: {
+            ...basicData,
+            values: valuesBool,
+          },
+          update: {
+            softDeleted: false,
+            ...basicData,
+            id: undefined,
           },
         });
         break;
       case "number":
       case "numberCategory":
-        await db.numberCategory.create({
-          data: {
-            ...basicData,
-            values: {
-              create: category.valueRange.map((v: number) => ({
-                value: v,
-                colorHex: category.colors?.[v.toString()],
-                properties: {
-                  create:
-                    categoryToProperties
-                      .get(category.id)
-                      ?.filter((p) => parseInt(p.value) === v)
-                      .map((property) => ({
-                        songId: property.songId,
-                      })) || [],
-                },
-              })),
+        const valuesNum = {
+          create: category.valueRange.map((v: number) => ({
+            value: v,
+            colorHex: category.colors?.[v.toString()],
+            properties: {
+              create:
+                categoryToProperties
+                  .get(category.id)
+                  ?.filter((p) => parseInt(p.value) === v)
+                  .map((property) => ({
+                    songId: property.songId,
+                  })) || [],
             },
+          })),
+        };
+        await db.numberCategory.upsert({
+          where: {
+            id: category.id,
+            bandId: bandId,
+          },
+          create: {
+            ...basicData,
+            values: valuesNum,
+          },
+          update: {
+            softDeleted: false,
+            ...basicData,
+            id: undefined,
           },
         });
         break;
       case "string":
       case "stringCategory":
-        await db.stringCategory.create({
-          data: {
-            ...basicData,
-            values: {
-              create: category.valueRange.map((v: string) => ({
-                value: v,
-                colorHex: category.colors?.[v],
-                properties: {
-                  create:
-                    categoryToProperties
-                      .get(category.id)
-                      ?.filter((p) => p.value === v)
-                      .map((property) => ({
-                        songId: property.songId,
-                      })) || [],
-                },
-              })),
+        const valuesString = {
+          create: category.valueRange.map((v: string) => ({
+            value: v,
+            colorHex: category.colors?.[v],
+            properties: {
+              create:
+                categoryToProperties
+                  .get(category.id)
+                  ?.filter((p) => p.value === v)
+                  .map((property) => ({
+                    songId: property.songId,
+                  })) || [],
             },
+          })),
+        };
+        await db.stringCategory.upsert({
+          where: {
+            id: category.id,
+            bandId: bandId,
+          },
+          create: {
+            ...basicData,
+            values: valuesString,
+          },
+          update: {
+            softDeleted: false,
+            ...basicData,
+            id: undefined,
           },
         });
         break;
       case "stringMultiple":
       case "multipleStringCategory":
-        await db.multipleStringCategory.create({
-          data: {
-            ...basicData,
-            values: {
-              create: category.valueRange.map((v: string) => ({
-                value: v,
-                // colorHex: category.colors?.[v],
-                properties: {
-                  create:
-                    categoryToProperties
-                      .get(category.id)
-                      ?.filter((p) => p.value.includes(v))
-                      .map((property) => ({
-                        songId: property.songId,
-                      })) || [],
-                },
-              })),
+        const valuesStringM = {
+          create: category.valueRange.map((v: string) => ({
+            value: v,
+            // colorHex: category.colors?.[v],
+            properties: {
+              create:
+                categoryToProperties
+                  .get(category.id)
+                  ?.filter((p) => p.value.includes(v))
+                  .map((property) => ({
+                    songId: property.songId,
+                  })) || [],
             },
+          })),
+        };
+        await db.multipleStringCategory.upsert({
+          where: {
+            id: category.id,
+            bandId: bandId,
+          },
+          create: {
+            ...basicData,
+            values: valuesStringM,
+          },
+          update: {
+            softDeleted: false,
+            ...basicData,
+            id: undefined,
           },
         });
         break;
@@ -244,6 +285,7 @@ export async function egressSongs(
     await db.song.findMany({
       where: {
         bandId: bandId,
+        softDeleted: false,
       },
       include: {
         booleanProperties: propertyQuery,
@@ -253,6 +295,7 @@ export async function egressSongs(
       },
       omit: {
         bandId: true,
+        softDeleted: true,
       },
       orderBy: {
         title: "asc",

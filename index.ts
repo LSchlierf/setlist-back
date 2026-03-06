@@ -260,6 +260,7 @@ userRouter.get("/repertoire/size", async (req: authenticatedRequest, res) => {
     await db.song.count({
       where: {
         bandId: bandId,
+        softDeleted: false,
       },
     })
   );
