@@ -661,6 +661,35 @@ export function initSocket(
       }
     });
 
+    socket.on(
+      "setlist:categoryVisibility",
+      async (categoryId: string, visible: boolean) => {
+        try {
+          await db.categoryVisibility.upsert({
+            where: {
+              categoryId_setlistId: {
+                setlistId: setlistId,
+                categoryId: categoryId,
+              },
+            },
+            create: {
+              categoryId: categoryId,
+              setlistId: setlistId,
+              visible: visible,
+            },
+            update: {
+              visible: visible,
+            },
+          });
+          socket
+            .to(roomId)
+            .emit("setlist:categoryVisibility", categoryId, visible);
+        } catch {
+          setlistSocket.to(roomId).emit("setlist");
+        }
+      }
+    );
+
     socket.on("disconnect", () => {
       log("band disconnect (setlist):", roomId);
     });

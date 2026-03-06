@@ -361,6 +361,11 @@ userRouter.get("/setlist/:id", async (req: authenticatedRequest, res) => {
           setlistId: true,
         },
       },
+      categoryVisibilities: {
+        omit: {
+          setlistId: true,
+        },
+      },
     },
     omit: {
       bandId: true,

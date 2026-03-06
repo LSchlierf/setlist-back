@@ -40,17 +40,18 @@ model song {
 // Setlists
 
 model setlist {
-    id          String    @id @default(uuid())
-    band        band      @relation(fields: [bandId], references: [id], onDelete: Cascade)
-    bandId      String
-    setSpots    setSpot[]
-    name        String    @default("new setlist")
-    breakLen    Int       @default(20)
-    breakBuffer Int       @default(5)
-    fixedTime   fixedTime @default(START)
-    time        String    @default("19:00") // End or start, depending on fixedTime
-    createdAt   DateTime?
-    deletedAt   DateTime?
+    id                   String               @id @default(uuid())
+    band                 band                 @relation(fields: [bandId], references: [id], onDelete: Cascade)
+    bandId               String
+    setSpots             setSpot[]
+    name                 String               @default("new setlist")
+    breakLen             Int                  @default(20)
+    breakBuffer          Int                  @default(5)
+    fixedTime            fixedTime            @default(START)
+    time                 String               @default("19:00") // End or start, depending on fixedTime
+    createdAt            DateTime?
+    deletedAt            DateTime?
+    categoryVisibilities categoryVisibility[]
 }
 
 enum fixedTime {
@@ -71,13 +72,14 @@ model setSpot {
 // Categories
 
 model category {
-    band        band    @relation(fields: [bandId], references: [id], onDelete: Cascade)
-    bandId      String
-    id          String  @id @default(uuid())
-    title       String
-    show        Boolean
-    type        String
-    softDeleted Boolean @default(false)
+    band                band                 @relation(fields: [bandId], references: [id], onDelete: Cascade)
+    bandId              String
+    id                  String               @id @default(uuid())
+    title               String
+    show                Boolean
+    type                String
+    softDeleted         Boolean              @default(false)
+    setlistVisibilities categoryVisibility[]
     @@delegate(type)
 }
 
@@ -167,4 +169,13 @@ model multipleStringProperty {
     song    song                        @relation(fields: [songId], references: [id], onDelete: Cascade)
     songId  String
     @@unique([valueId, songId])
+}
+
+model categoryVisibility {
+    category   category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+    categoryId String
+    setlist    setlist  @relation(fields: [setlistId], references: [id], onDelete: Cascade)
+    setlistId  String
+    visible    Boolean
+    @@unique([categoryId, setlistId])
 }
