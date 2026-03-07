@@ -1,10 +1,15 @@
+import { ingestRepertoire, ingestSetlist } from "./importExport.ts";
 import { log } from "./logging.ts";
+import { testuserRepertoire, testUserSetlist1, testUserSetlist2 } from "./testuserData.ts";
 import { type db } from "./types.ts";
 
 export async function bandCleanup(bandId: string, db: db) {
   await deletedSongCleanup(bandId, db);
   await deletedCategoryCleanup(bandId, db);
   await spotPrioCleanup(bandId, db);
+  if ("testuser" === bandId) {
+    await testuserCleanup(db);
+  }
 }
 
 async function spotPrioCleanup(bandId: string, db: db) {
@@ -48,4 +53,28 @@ async function deletedCategoryCleanup(bandId: string, db: db) {
     },
   });
   log("permanently deleted", rows.count, "soft deleted categories");
+}
+
+async function testuserCleanup(db: db) {
+  await db.$transaction(async (tx) => {
+    await tx.song.deleteMany({
+      where: {
+        bandId: "testuser",
+      },
+    });
+    await tx.category.deleteMany({
+      where: {
+        bandId: "testuser",
+      },
+    });
+    await tx.setlist.deleteMany({
+      where: {
+        bandId: "testuser",
+      },
+    });
+    await ingestRepertoire(tx, "testuser", testuserRepertoire);
+    await ingestSetlist(tx, "testuser", testUserSetlist1);
+    await ingestSetlist(tx, "testuser", testUserSetlist2);
+  });
+  log("reset test user");
 }

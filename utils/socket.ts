@@ -8,7 +8,7 @@ import {
   type setlistTimeDTO,
 } from "./types.ts";
 import { ingestSingleCategory } from "./importExport.ts";
-import { log } from "./logging.ts";
+import { error, log } from "./logging.ts";
 import { bandCleanup } from "./cleanup.ts";
 
 function validateToken(token: string) {
@@ -94,7 +94,8 @@ export function initSocket(
 
         socket.to(bandId).emit("repertoire:addSong", newSong);
         mainSocket.to(bandId).emit("refresh");
-      } catch {
+      } catch (e) {
+        error("Error occured during repertoire edit:", e);
         repertoireSocket.to(bandId).emit("repertoire");
       }
     });
@@ -159,7 +160,11 @@ export function initSocket(
         ) =>
           categories
             .filter((c) => c.type === categoryType)
-            .filter((c) => song.properties[c.id] !== undefined);
+            .filter(
+              (c) =>
+                song.properties[c.id] !== undefined &&
+                song.properties[c.id] !== null
+            );
 
         await db.song.update({
           where: {
@@ -230,7 +235,8 @@ export function initSocket(
         });
 
         socket.to(bandId).emit("repertoire:updateSong", newSong);
-      } catch {
+      } catch (e) {
+        error("Error occured during repertoire edit:", e);
         repertoireSocket.to(bandId).emit("repertoire");
       }
     });
@@ -248,7 +254,8 @@ export function initSocket(
         });
         socket.to(bandId).emit("repertoire:deleteSong", deletedSongId);
         mainSocket.to(bandId).emit("refresh");
-      } catch {
+      } catch (e) {
+        error("Error occured during repertoire edit:", e);
         repertoireSocket.to(bandId).emit("repertoire");
       }
     });
@@ -257,7 +264,8 @@ export function initSocket(
       try {
         await ingestSingleCategory(db, bandId, newCategory);
         socket.to(bandId).emit("repertoire:addCategory", newCategory);
-      } catch {
+      } catch (e) {
+        error("Error occured during repertoire edit:", e);
         repertoireSocket.to(bandId).emit("repertoire");
       }
     });
@@ -277,7 +285,8 @@ export function initSocket(
         });
 
         socket.to(bandId).emit("repertoire:updateCategory", newCategory);
-      } catch {
+      } catch (e) {
+        error("Error occured during repertoire edit:", e);
         repertoireSocket.to(bandId).emit("repertoire");
       }
     });
@@ -445,7 +454,8 @@ export function initSocket(
         }
 
         socket.to(bandId).emit("repertoire:deleteColors", categoryId);
-      } catch {
+      } catch (e) {
+        error("Error occured during repertoire edit:", e);
         repertoireSocket.to(bandId).emit("repertoire");
       }
     });

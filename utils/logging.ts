@@ -8,3 +8,7 @@ function timeStamp() {
 export function log(...data: any) {
   console.log(timeStamp(), ...data);
 }
+
+export function error(...data: any) {
+  console.error(timeStamp(), ...data);
+}

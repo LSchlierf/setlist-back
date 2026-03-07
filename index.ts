@@ -179,7 +179,7 @@ userRouter.get("/ping", async (req: authenticatedRequest, res) => {
 userRouter.post("/changePassword", async (req: authenticatedRequest, res) => {
   const bandId = req.bandId;
 
-  if (!req.body) {
+  if (!req.body || "testuser" === bandId) {
     return res.sendStatus(400);
   }
 

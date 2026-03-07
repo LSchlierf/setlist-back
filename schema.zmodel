@@ -23,7 +23,7 @@ model band {
 
 model song {
     id                       String                   @id @default(uuid())
-    title                    String                   @unique
+    title                    String
     artist                   String
     length                   Int
     notes                    String                   @default('')
@@ -35,6 +35,7 @@ model song {
     bandId                   String
     setSpots                 setSpot[]
     softDeleted              Boolean                  @default(false)
+    // @@unique([title, artist, bandId])
 }
 
 // Setlists

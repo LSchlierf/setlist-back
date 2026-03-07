@@ -416,26 +416,26 @@ export async function ingestSetlist(
       data: {
         ...setlist,
         id: undefined,
-        band: {
-          connect: {
-            id: bandId,
-          },
-        },
+        bandId: bandId,
         createdAt: new Date(),
         setSpots: {
           create: setlist.setSpots,
         },
+        categoryVisibilities:
+          setlist.categoryVisibilities?.length > 0
+            ? {
+                createMany: {
+                  data: setlist.categoryVisibilities,
+                },
+              }
+            : undefined,
       },
     });
   } else {
     // v1
     await db.setlist.create({
       data: {
-        band: {
-          connect: {
-            id: bandId,
-          },
-        },
+        bandId: bandId,
         createdAt: new Date(),
         time: setlist.startTime,
         name: setlist.concert,
