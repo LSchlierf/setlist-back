@@ -172,8 +172,12 @@ userRouter.get("/ping", async (req: authenticatedRequest, res) => {
       id: req.bandId,
     },
   });
-  res.status(200);
-  res.send({ id: req.bandId, name: band?.name });
+  if (band === null) {
+    res.sendStatus(403);
+  } else {
+    res.status(200);
+    res.send({ id: req.bandId, name: band.name });
+  }
 });
 
 userRouter.post("/changePassword", async (req: authenticatedRequest, res) => {
