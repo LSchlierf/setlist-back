@@ -1,6 +1,10 @@
 import { ingestRepertoire, ingestSetlist } from "./importExport.ts";
 import { log } from "./logging.ts";
-import { testuserRepertoire, testUserSetlist1, testUserSetlist2 } from "./testuserData.ts";
+import {
+  testuserRepertoire,
+  testUserSetlist1,
+  testUserSetlist2,
+} from "./testuserData.ts";
 import { type db } from "./types.ts";
 
 export async function bandCleanup(bandId: string, db: db) {
@@ -73,8 +77,8 @@ async function testuserCleanup(db: db) {
       },
     });
     await ingestRepertoire(tx, "testuser", testuserRepertoire);
-    await ingestSetlist(tx, "testuser", testUserSetlist1);
-    await ingestSetlist(tx, "testuser", testUserSetlist2);
+    await ingestSetlist(tx, "testuser", testUserSetlist1, testUserSetlist1.id);
+    await ingestSetlist(tx, "testuser", testUserSetlist2, testUserSetlist2.id);
   });
   log("reset test user");
 }

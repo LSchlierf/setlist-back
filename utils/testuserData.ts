@@ -271,11 +271,11 @@ export const testuserRepertoire = {
       show: true,
       type: "stringCategory",
       softDeleted: false,
-      valueRange: ["Acoustic", "Electric Red", "Electric Blue", "None"],
+      valueRange: ["Acoustic", "Electric Red", "Ocean Blue", "None"],
       colors: {
         Acoustic: "#63452c",
         "Electric Red": "#a51d2d",
-        "Electric Blue": "#1a5fb4",
+        "Ocean Blue": "#1a5fb4",
         None: "#000000",
       },
     },
@@ -308,7 +308,7 @@ export const testuserRepertoire = {
       title: "Allez!",
       artist: "Irie Révoltés",
       length: 190,
-      notes: "",
+      notes: "With crowdwork",
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 118,
         "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Red",
@@ -336,7 +336,7 @@ export const testuserRepertoire = {
       notes: "",
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 150,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Dexter",
       },
     },
@@ -373,7 +373,7 @@ export const testuserRepertoire = {
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 119,
         "069857d6-273d-4513-9315-d7784465ba8b": 12,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Emily",
         "eb87719d-ca20-49a7-abca-6365141325b9": ["Billie", "Dexter", "Tyler"],
       },
@@ -387,7 +387,7 @@ export const testuserRepertoire = {
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 70,
         "069857d6-273d-4513-9315-d7784465ba8b": 17,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Dexter",
         "eb87719d-ca20-49a7-abca-6365141325b9": [
           "Billie",
@@ -430,7 +430,7 @@ export const testuserRepertoire = {
       notes: "",
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 101,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Emily",
         "eb87719d-ca20-49a7-abca-6365141325b9": ["Chrissie", "Tyler"],
       },
@@ -440,7 +440,7 @@ export const testuserRepertoire = {
       title: "Devil in a Midnight Mass",
       artist: "Billy Talent",
       length: 172,
-      notes: "",
+      notes: "Intro looped",
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 178,
         "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Red",
@@ -456,7 +456,7 @@ export const testuserRepertoire = {
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 82,
         "069857d6-273d-4513-9315-d7784465ba8b": 43,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Billie",
         "eb87719d-ca20-49a7-abca-6365141325b9": ["Emily", "Chrissie"],
       },
@@ -497,7 +497,7 @@ export const testuserRepertoire = {
       properties: {
         "6033029a-20bd-4284-9bad-82c1c9fb04d3": true,
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 128,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Emily",
         "eb87719d-ca20-49a7-abca-6365141325b9": ["Chrissie"],
       },
@@ -537,7 +537,7 @@ export const testuserRepertoire = {
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 110,
         "069857d6-273d-4513-9315-d7784465ba8b": 45,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Emily",
       },
     },
@@ -561,7 +561,7 @@ export const testuserRepertoire = {
       notes: "",
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 106,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Billie",
         "eb87719d-ca20-49a7-abca-6365141325b9": ["Dexter", "Tyler"],
       },
@@ -586,7 +586,7 @@ export const testuserRepertoire = {
       notes: "",
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 116,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Billie",
         "eb87719d-ca20-49a7-abca-6365141325b9": ["Chrissie"],
       },
@@ -625,7 +625,7 @@ export const testuserRepertoire = {
       properties: {
         "6033029a-20bd-4284-9bad-82c1c9fb04d3": true,
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 115,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Dexter",
         "eb87719d-ca20-49a7-abca-6365141325b9": ["Emily", "Chrissie"],
       },
@@ -648,10 +648,10 @@ export const testuserRepertoire = {
       title: "Where Is My Mind?",
       artist: "Pixies",
       length: 233,
-      notes: "",
+      notes: "Fade-out with moderation",
       properties: {
         "f0ce63ba-eadb-4415-8a59-65c9e1ee35f9": 81,
-        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Electric Blue",
+        "c64a8daa-cb84-43e7-ac40-f7e645a7bb93": "Ocean Blue",
         "ece7eea1-11af-46c9-aa83-600ac1fbfc1f": "Dexter",
       },
     },
@@ -659,7 +659,7 @@ export const testuserRepertoire = {
 };
 
 export const testUserSetlist1 = {
-  id: "c3457293-7395-4687-b9cb-9f59af656ec4",
+  id: "testuser-winefest",
   name: "NY Wine Fest",
   breakLen: 20,
   breakBuffer: 5,
@@ -755,7 +755,7 @@ export const testUserSetlist1 = {
 };
 
 export const testUserSetlist2 = {
-  id: "f3e3fd0c-475e-4ed2-91ee-6dcb2e57424b",
+  id: "testuser-punkrock",
   name: "Punk Rock Basement",
   breakLen: 20,
   breakBuffer: 5,

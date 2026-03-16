@@ -21,12 +21,12 @@ import {
 import { initSocket } from "./utils/socket.ts";
 import { log } from "./utils/logging.ts";
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 let server: http.Server | https.Server;
 let acmeServer: http.Server;
 
-const db = createZenStackClient();
+const db = createZenStackClient(process.env.DBURL!);
 const app = express();
 let acmePassThrough = express();
 
@@ -376,6 +376,10 @@ userRouter.get("/setlist/:id", async (req: authenticatedRequest, res) => {
       deletedAt: true,
     },
   });
+
+  if (setlist === null) {
+    return res.sendStatus(404);
+  }
 
   res.status(200);
   res.json(setlist);

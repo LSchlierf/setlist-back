@@ -1,5 +1,4 @@
 import { createZenStackClient } from "../zenstack/utils.ts";
-import { log } from "./logging.ts";
 
 export type genericCategory = {
   id: string;
@@ -408,14 +407,15 @@ export async function egressRepertoire(
 export async function ingestSetlist(
   db: ReturnType<typeof createZenStackClient>,
   bandId: string,
-  setlist: any
+  setlist: any,
+  id?: string | undefined
 ) {
   if (setlist.setSpots !== undefined) {
     // v2
     await db.setlist.create({
       data: {
         ...setlist,
-        id: undefined,
+        id: id,
         bandId: bandId,
         createdAt: new Date(),
         setSpots: {
@@ -435,6 +435,7 @@ export async function ingestSetlist(
     // v1
     await db.setlist.create({
       data: {
+        id: id,
         bandId: bandId,
         createdAt: new Date(),
         time: setlist.startTime,

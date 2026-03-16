@@ -16,7 +16,7 @@ if (process.env.DBURLOLD === undefined || process.env.DBURL === undefined) {
 }
 
 const db_old = pgp(process.env.DBURLOLD);
-const db_new = createZenStackClient();
+const db_new = createZenStackClient(process.env.DBURL!);
 
 type t = TransactionClientContract<SchemaType, any, {}, {}>;
 
