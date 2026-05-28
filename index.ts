@@ -473,6 +473,11 @@ app.use("/api/user", userRouter);
 initSocket(io, db);
 
 acmePassThrough.use(express.static("/acme", { dotfiles: "allow" }));
+acmePassThrough.use((req, res) => {
+  if (!req.url.includes("acme")) {
+    res.redirect("https://" + req.host)
+  }
+})
 
 app.use("/", proxy("localhost:3000/"));
 
