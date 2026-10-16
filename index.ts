@@ -3,9 +3,7 @@ import { createZenStackClient } from "./zenstack/utils.ts";
 import bodyparser from "body-parser";
 import crypt from "crypto";
 import express, { Router } from "express";
-import fs from "fs";
 import http from "http";
-import https from "https";
 import jwt from "jsonwebtoken";
 import { Server } from "socket.io";
 import proxy from "express-http-proxy";
@@ -23,33 +21,9 @@ import { log } from "./utils/logging.ts";
 
 dotenv.config({ quiet: true });
 
-let server: http.Server | https.Server;
-let acmeServer: http.Server;
-
 const db = createZenStackClient(process.env.DBURL!);
 const app = express();
-let acmePassThrough = express();
-
-if (!process.env.DEV) {
-  const privateKey = fs.readFileSync(
-    "/etc/letsencrypt/live/setlist.lschlierf.de/privkey.pem",
-    "utf-8"
-  );
-  const certificate = fs.readFileSync(
-    "/etc/letsencrypt/live/setlist.lschlierf.de/fullchain.pem",
-    "utf-8"
-  );
-
-  const credentials = {
-    key: privateKey,
-    cert: certificate,
-  };
-
-  server = https.createServer(credentials, app);
-  acmeServer = http.createServer(acmePassThrough);
-} else {
-  server = http.createServer(app);
-}
+let server = http.createServer(app);
 
 const io = new Server(server);
 
@@ -472,23 +446,14 @@ app.use("/api/user", userRouter);
 
 initSocket(io, db);
 
-acmePassThrough.use(express.static("/acme", { dotfiles: "allow" }));
-acmePassThrough.use((req, res) => {
-  if (!req.url.includes("acme")) {
-    res.redirect("https://" + req.host)
-  }
-})
-
 app.use("/", proxy("localhost:3000/"));
 
-const PORT = process.env.DEV ? 8080 : 443;
+const PORT = process.env.DEV ? 8080 : 80;
 
 server.listen(PORT, () => {
   log(`server listening on port ${PORT}`);
   if (process.env.DEV) {
     log(`http://localhost:${PORT}`);
-  } else {
-    acmeServer.listen(80);
   }
   db.band.count().then((c) => {
     log(`${c} users loaded in db`);
