@@ -59,7 +59,7 @@ async function deletedCategoryCleanup(bandId: string, db: db) {
   log("permanently deleted", rows.count, "soft deleted categories");
 }
 
-async function testuserCleanup(db: db) {
+export async function testuserCleanup(db: db) {
   await db.$transaction(async (tx) => {
     await tx.song.deleteMany({
       where: {

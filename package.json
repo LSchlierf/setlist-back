@@ -2,7 +2,9 @@
   "name": "setlist-back",
   "version": "1.0.0",
   "main": "app.js",
-  "scripts": {},
+  "scripts": {
+    "seed": "ts-node seed.ts"
+  },
   "author": "",
   "license": "ISC",
   "description": "",
